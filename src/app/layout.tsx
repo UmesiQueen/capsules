@@ -9,7 +9,10 @@ const hostGrotesk = Host_Grotesk({
 
 export const metadata: Metadata = {
   title: "Closer to Nature — Closer to Yourself",
-  description: "Welcome to a world of wild California desert with Capsules®, where you will desert with Capsules®, where you will discover exquisite nature observing itdiscover exquisite nature observing it from capsule houses, nestled in thefrom capsule houses, nestled in the one of the most breathtakingone of the most breathtaking destination on the United States.",
+  description: "Welcome to a world of wild California desert with Capsules®, where you will desert with Capsules®, where you will discover exquisite nature observing it discover exquisite nature observing it from capsule houses, nestled in the from capsule houses, nestled in the one of the most breathtaking one of the most breathtaking destination on the United States.",
+  icons:{
+    icon:'./favicon.ico'
+  }
 };
 
 export default function RootLayout({
