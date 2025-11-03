@@ -5,7 +5,6 @@
 
 :root {
   --background-color: #181717;
-  /* --color: #f4efe7; */
   --radius: 0.625rem;
   --background: rgb(255, 255, 255);
   --foreground: oklch(0.145 0 0);
@@ -93,7 +92,23 @@ html {
 
 body {
   background-color: var(--background-color);
-  color:  #f4efe7;
+  color: #f4efe7;
+}
+
+.clip-text-original {
+  position: relative;
+  display: block;
+  color: #2a2725;
+  line-height: 1.2;
+}
+
+.clip-text-clone {
+  clip-path: inset(0 0 100% 0);
+  color: #f4efe7;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 .dark {
