@@ -10,6 +10,8 @@ import TextRevealAnimation from "@/components/TextRevealAnimation";
 
 export default function Home() {
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const chooseTextRef = React.useRef<HTMLDivElement>(null);
+  const bestTextRef = React.useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -19,6 +21,7 @@ export default function Home() {
       content: "#smooth-content",
     });
 
+    // hero section background zoom effect
     if (!containerRef.current) return;
     const container = containerRef.current;
 
@@ -29,6 +32,22 @@ export default function Home() {
         trigger: container,
         start: "top top", // Start when top of element hits top of viewport
         end: "bottom 25%", // End when bottom of element hits 25% of viewport
+        scrub: true,
+      },
+    });
+
+    // choose the one text animation
+    if (!chooseTextRef.current && !bestTextRef.current) return;
+    const chooseText = chooseTextRef.current;
+    const bestText = bestTextRef.current;
+
+    gsap.to([chooseText, bestText], {
+      clipPath: "inset(0% 0 -20px 0)",
+      y: "0",
+      scrollTrigger: {
+        trigger: [chooseText, bestText],
+        start: "bottom 80%",
+        end: "bottom 20%",
         scrub: true,
       },
     });
@@ -81,7 +100,7 @@ export default function Home() {
             </div>
           </section>
           <section className="px-7 pb-10">
-            <div className="text-[80px] tracking-tighter leading-20 py-36">
+            <div className="text-[80px] tracking-tighter py-36">
               <TextRevealAnimation>
                 <p>Welcome to a world of wild California</p>
                 <p>desert with Capsules®, where you will</p>
@@ -117,16 +136,26 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div>
-              <p className="w-fit text-sm">Discover available Capsules®</p>
-            </div>
           </section>
           <section className="px-7 mb-20">
-            <div className="text-[184px] leading-none py-5">
-              <p>Choose the one</p>
-              <p>you like best</p>
+            <div>
+              <p className="text-sm pb-5">Discover available Capsules®</p>
             </div>
-            <div className="py-10 flex *:w-full *:flex-grow ">
+            <div className="text-[184px] text-nowrap leading-none">
+              <div
+                ref={chooseTextRef}
+                className="[clip-path:inset(100%_0_-20px_0)] -translate-y-[50px] "
+              >
+                <div>Choose the one</div>
+              </div>
+              <div
+                ref={bestTextRef}
+                className="[clip-path:inset(100%_0_-20px_0)] -translate-y-[50px] "
+              >
+                <div>you like best</div>
+              </div>
+            </div>
+            <div className="mt-8 pb-10 flex *:w-full *:flex-grow ">
               <div className="text-[38px] tracking-wide leading-10 text-light-brown">
                 <p>You can choose one of three</p>
                 <p>premium capsule houses in our </p>
