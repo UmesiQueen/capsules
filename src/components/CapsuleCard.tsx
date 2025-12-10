@@ -1,6 +1,5 @@
 import * as React from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 import { gsap, useGSAP } from "@/utils/gsap";
 
 interface CapsuleProps {
@@ -18,9 +17,8 @@ export default function Capsule({
   imgSrc,
   features,
   cost,
-  style,
 }: CapsuleProps) {
-  // const [showDialog, setShowDialog] = React.useState(false);
+  const [showDialog, setShowDialog] = React.useState(false);
   const capsuleRef = React.useRef<HTMLDivElement | null>(null);
   const tlRef = React.useRef<gsap.core.Timeline | null>(null);
 
@@ -39,10 +37,16 @@ export default function Capsule({
         .timeline({
           paused: true,
           onStart: () => {
-            if (dialog) gsap.set(dialog, { display: "block" });
+            if (dialog) {
+              gsap.set(dialog, { display: "block" });
+              setShowDialog(true);
+            }
           },
           onReverseComplete: () => {
-            if (dialog) gsap.set(dialog, { display: "none" });
+            if (dialog) {
+              gsap.set(dialog, { display: "none" });
+              setShowDialog(false);
+            }
           },
         })
         .add("start")
@@ -96,17 +100,57 @@ export default function Capsule({
 
       if (!dialogBtn) return;
       dialogBtn.addEventListener("click", toggleDialog);
+
+      return () => {
+        dialogBtn.removeEventListener("click", toggleDialog);
+      };
     },
     { scope: capsuleRef }
   );
 
+React.useEffect(() => {
+  if (!showDialog) return;
+
+  const handleClickOutside = (event: MouseEvent) => {
+    const dialog = capsuleRef.current?.querySelector(".dialog");
+    const dialogBtnRef = capsuleRef.current?.querySelector(".dialog-btn");
+    const clickedInsideDialog = dialog?.contains(event.target as Node);
+    const clickedButton = dialogBtnRef?.contains(event.target as Node);
+
+    if (!clickedInsideDialog && !clickedButton) {
+      tlRef.current?.reverse();
+      setShowDialog(false);
+    }
+  };
+
+   const handleScroll = (event: Event) => {
+    const dialog = capsuleRef.current?.querySelector(".dialog");
+    const scrolledInsideDialog = dialog?.contains(event.target as Node);
+    
+    // Close dialog if scroll happens outside of it
+    if (!scrolledInsideDialog) {
+      tlRef.current?.reverse();
+      setShowDialog(false);
+    }
+  };
+
+  // Add small delay to avoid immediate triggering
+  const timeoutId = setTimeout(() => {
+    window.addEventListener("click", handleClickOutside);
+    window.addEventListener("scroll", handleScroll, true); // Use capture phase
+  }, 0);
+
+  return () => {
+    clearTimeout(timeoutId);
+    window.removeEventListener("click", handleClickOutside);
+    window.removeEventListener("scroll", handleScroll, true);
+  };
+}, [showDialog]);
+
   return (
     <div
       ref={capsuleRef}
-      className={cn(
-        "capsule-card relative overflow-hidden rounded-[50px] h-[calc(100vh-16px)] w-full",
-        style
-      )}
+      className="capsule-card relative overflow-hidden rounded-[50px] h-[calc(100dvh-16px)] w-full"
     >
       <div
         style={{ backgroundImage: `url(${imgSrc})` }}
