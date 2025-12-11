@@ -201,7 +201,7 @@ React.useEffect(() => {
                   </svg>
                 </span>
               </button>
-              <div className="dialog bg-[#2a2725] rounded-[50px] font-sans absolute bottom-12 left-0">
+              <div className="dialog bg-bokara-grey rounded-[50px] font-sans absolute bottom-12 left-0">
                 <div className="dialog-content flex justify-between items-center gap-3 p-3">
                   <div className="text-pale-white">
                     <h2 className="font-medium text-[38px] tracking-wide leading-10">
