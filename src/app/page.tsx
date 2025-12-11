@@ -235,13 +235,87 @@ export default function Home() {
         },
         "card3ContentReveal"
       );
+
+    // carousel sections
+    const carouselContainer = document.querySelector(".capsule-carousel");
+    gsap.set([".capsule-carousel .item-3", ".capsule-carousel .item-4"], {
+      right: "0%",
+    });
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: carouselContainer,
+          start: "20 top",
+          end: "+=300%",
+          pin: true,
+          scrub: true,
+          markers: true,
+        },
+      })
+      .to(
+        {},
+        {
+          duration: 0.15,
+          onStart: () => {
+            carousel1Tl.play();
+          },
+          onReverseComplete: () => {
+            carousel1Tl.reverse();
+          },
+        }
+      );
+
+    const carousel1Tl = gsap
+      .timeline({
+        paused: true,
+      })
+      .add("carousel1OnLeave")
+      .fromTo(
+        ".capsule-carousel .item-1",
+        { scale: 1, opacity: 1 },
+        { scale: 0.8, opacity: 0 },
+        "carousel1OnLeave"
+      )
+      .fromTo(
+        ".capsule-carousel .item-2",
+        { right: "0%" },
+        { right: "50%" },
+        "carousel1OnLeave"
+      )
+      .add("carousel2OnEnter", "<")
+      .fromTo(
+        ".capsule-carousel .item-3",
+        { y: "100%" },
+        { y: "0%" },
+        "carousel2OnEnter"
+      )
+      .add("carousel2OnLeave")
+      .fromTo(
+        ".capsule-carousel .item-2",
+        { scale: 1, opacity: 1 },
+        { scale: 0.8, opacity: 0 },
+        "carousel2OnLeave"
+      )
+      .add("carousel3OnEnter", "<")
+      .fromTo(
+        ".capsule-carousel .item-3",
+        { right: "0%" },
+        { right: "50%" },
+        "carousel3OnEnter"
+      )
+      .fromTo(
+        ".capsule-carousel .item-4",
+        { y: "100%" },
+        { y: "0%" },
+        "carousel3OnEnter"
+      );
   });
 
   return (
     <div id="smooth-wrapper">
       <div id="smooth-content">
-        <div className="p-2 font-sans">
-          <section className="mb-20">
+        <div className="px-2 font-sans">
+          <section className="py-2 mb-20">
             <div className="min-h-[calc(100vh-16px)] rounded-[50px] relative overflow-hidden">
               <div className="hero h-full w-full bg-[url('/img/cap1.png')] scale-[1] bg-no-repeat bg-center bg-cover absolute top-0 left-0 saturate-[120%]" />
               <video
@@ -432,6 +506,112 @@ export default function Home() {
             </div>
             <div className="scroll-indicator absolute bottom-15 right-5 w-80 h-[2px] rounded-md bg-white/30 z-10 inline-flex overflow-hidden">
               <div className="capsule-progress w-0 h-full bg-white" />
+            </div>
+          </section>
+          <section className="flex flex-col items-center justify-center text-center h-dvh">
+            <div className="mb-10 text-[15px] text-light-brown tracking-[-0.2] leading-[23px] font-semibold">
+              Closer than you think
+            </div>
+            <div className="text-[90px] tracking-[-4px] leading-[96px]">
+              Our Capsules® are located <br />
+              near Los Angeles with easy <br />
+              <span className="underline text-light-brown underline-offset-[10px] decoration-from-font decoration-solid cursor-pointer">
+                access by road.
+              </span>
+            </div>
+          </section>
+          <section>
+            <div className="ml-5 text-[15px] text-white tracking-[-0.2] leading-[23px] font-semibold">
+              Want to learn more about <br />
+              the benefits of—Capsules®?
+            </div>
+            <div className="py-10">
+              <Marquee autoFill={true} speed={150}>
+                <div className="text-[200px] leading-none overflow-hidden">
+                  Why Capsule®?*
+                </div>
+              </Marquee>
+            </div>
+            <div className="capsule-carousel py-2 h-dvh bg-orange-500">
+              <div className="grid grid-cols-2 w-full h-full relative *:h-[calc(100dvh-16px)] *:w-[calc(50vw-12px)] *:overflow-hidden *:rounded-[50px] *:absolute *:top-0">
+                <div className="item-1 bg-bokara-grey z-0">
+                  <div className="flex flex-col justify-between h-full w-full py-10 px-6">
+                    <div className="text-light-brown text-[38px] tracking-wide leading-10 font-semibold w-fit">
+                      <div>Enjoy the view</div>
+                      <div>through —the wide</div>
+                      <div>panoramic glass</div>
+                      <div>window</div>
+                    </div>
+                    <div className="flex items-center gap-5 justify-between w-full">
+                      <div className="space-x-[4px]">
+                        <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>01</span>
+                        </div>
+                        <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>03</span>
+                        </div>
+                      </div>
+                      <div>
+                        Get closer to the desert nature than ever before <br />{" "}
+                        and admire this unique, breathtaking landscape.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="item-2 bg-[url('/img/cap3.png')] bg-center bg-cover z-3 " />
+                <div className="item-3 bg-green-500 z-2">
+                  <div className="flex flex-col justify-between h-full w-full py-10 px-6">
+                    <div className="text-light-brown text-[38px] tracking-wide leading-10 font-semibold w-fit">
+                      <div>Sound of silence</div>
+                      <div>—out of the city</div>
+                      <div>rush with completely</div>
+                      <div>privacy</div>
+                    </div>
+                    <div className="flex items-center gap-5 justify-between w-full">
+                      <div className="space-x-[4px]">
+                        <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>02</span>
+                        </div>
+                        <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>03</span>
+                        </div>
+                      </div>
+                      <div>
+                        Here, every whisper of nature recharges
+                        <br /> your soul—your sanctuary of solitude awaits.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="item-4 bg-[url('/img/cap2.png')] bg-center bg-cover z-1" />
+              </div>
+              {/* 03 */}
+              {/* <div className="carousel3 h-[calc(100dvh-16px)] w-full flex items-center gap-2 *:flex-grow *:h-full *:w-full *:overflow-hidden *:rounded-[50px]">
+                <div className="bg-bokara-grey">
+                  <div className="flex flex-col justify-between h-full w-full py-10 px-6">
+                    <div className="text-light-brown text-[38px] tracking-wide leading-10 font-semibold w-fit">
+                      <div>Relax yourself</div>
+                      <div>in—Wooden</div>
+                      <div>Jacuzzi</div>
+                    </div>
+                    <div className="flex items-center gap-5 justify-between w-full">
+                      <div className="space-x-[4px]">
+                        <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>03</span>
+                        </div>
+                        <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>03</span>
+                        </div>
+                      </div>
+                      <div>
+                        Let the natural textures and gentle bubbles <br />{" "}
+                        transport you to a realm of pure, handcrafted bliss.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-[url('/img/cap1.png')] bg-center bg-cover" />
+              </div> */}
             </div>
           </section>
         </div>
