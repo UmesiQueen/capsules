@@ -30,18 +30,27 @@ export default function Home() {
       },
     });
 
-    // choose the one text animation
-    const chooseTextElements = document.querySelectorAll(".chooseText");
-    gsap.to(chooseTextElements, {
-      clipPath: "inset(0% 0 -20px 0)",
-      y: "0",
-      scrollTrigger: {
-        trigger: chooseTextElements,
-        start: "bottom 80%",
-        end: "bottom 20%",
-        scrub: true,
-      },
+    // choose section text animation
+    const chooseContainer = document.querySelector(".choose-container");
+    const chooseSubText = document.querySelector(".choose-sub");
+    const chooseTexts = document.querySelectorAll(".choose-text");
+    const splitChooseWords = SplitText.create(chooseTexts, {
+      type: "words",
+      mask: "words",
     });
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: chooseContainer,
+          start: "top 90%",
+          end: "bottom center",
+          scrub: true,
+        },
+      })
+      .addLabel("start")
+      .from(chooseSubText, { autoAlpha: 0, duration: 0.2 }, "start")
+      .addLabel("end", "<0.1")
+      .from(splitChooseWords.words, { y: "-100%" }, "end");
 
     // capsule cards content animation
     const contentRevealAnimation = (card: string) => {
@@ -246,10 +255,9 @@ export default function Home() {
           end: "+=200%",
           pin: true,
           scrub: 1,
-          markers: true,
           anticipatePin: 1,
           snap: {
-            snapTo: "labels", // Snap to label positions
+            snapTo: "labels",
             duration: 3,
             delay: 0.2,
             ease: "power2.inOut",
@@ -364,12 +372,54 @@ export default function Home() {
         { y: "-100%" },
         "carousel3OnEnter"
       );
+
+    // discover section text animation
+    const discoverContainer = document.querySelector(".discover-container");
+    const discoverSubText = document.querySelector(".discover-sub");
+    const discoverTexts = document.querySelectorAll(".discover-text");
+    const splitDiscoverWords = SplitText.create(discoverTexts, {
+      type: "words",
+      mask: "words",
+    });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: discoverContainer,
+          start: "top 90%",
+          end: "bottom center",
+          scrub: true,
+        },
+      })
+      .addLabel("start")
+      .from(discoverSubText, { autoAlpha: 0, duration: 0.2 }, "start")
+      .addLabel("end", "<0.1")
+      .from(splitDiscoverWords.words, { y: "-100%" }, "end");
+
+    const discoverLevelsContainer = document.querySelector(".discover-levels");
+    const levelOne = document.querySelector(".discover-levels .level-1");
+    const levelTwo = document.querySelector(".discover-levels .level-2");
+    const levelThree = document.querySelector(".discover-levels .level-3");
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: discoverLevelsContainer,
+          start: "top center",
+          end: "+=10%",
+          scrub: true,
+        },
+      })
+      .addLabel("start")
+      .to(levelOne, { width: "45%", ease: "power2.in" }, "start")
+      .to(levelTwo, { width: "85%", ease: "power2.in" }, "start")
+      .to(levelThree, { width: "65%", ease: "power2.in" }, "start");
   });
 
   return (
     <div id="smooth-wrapper">
       <div id="smooth-content">
-        <div className="px-2 font-sans">
+        <div className="px-2 font-sans from-[#181717] to-[#22201f] bg-gradient-to-b">
           <section className="py-2 mb-20">
             <div className="min-h-[calc(100vh-16px)] rounded-[50px] relative overflow-hidden">
               <div className="hero h-full w-full bg-[url('/img/cap1.png')] scale-[1] bg-no-repeat bg-center bg-cover absolute top-0 left-0 saturate-[120%]" />
@@ -448,16 +498,14 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="px-7 mb-20">
-            <div>
-              <p className="text-sm pb-5">Discover available Capsules®</p>
-            </div>
-            <div className="text-[184px] text-nowrap leading-none">
-              <div className="chooseText [clip-path:inset(100%_0_-20px_0)] -translate-y-[50px]">
-                <div>Choose the one</div>
-              </div>
-              <div className="chooseText [clip-path:inset(100%_0_-20px_0)] -translate-y-[50px] ">
-                <div>you like best</div>
+          <section className="px-5 mb-20">
+            <div className="choose-container">
+              <p className="choose-sub text-sm pb-8">
+                Discover available Capsules®
+              </p>
+              <div className="text-[184px] text-nowrap leading-tight">
+                <div className="choose-text">Choose the one</div>
+                <div className="choose-text -mt-10">you like best</div>
               </div>
             </div>
             <div className="mt-8 pb-10 flex *:w-full *:flex-grow ">
@@ -670,6 +718,63 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="item-4 bg-[url('/img/cap1.png')] bg-right bg-cover" />
+              </div>
+            </div>
+          </section>
+          <section className="mt-40 px-5">
+            <div className="discover-container">
+              <p className="discover-sub text-sm pb-8">
+                Ready for an adventure?
+              </p>
+              <div className="text-[184px] text-nowrap leading-tight">
+                <div className="discover-text">Discover the</div>
+                <div className="discover-text -mt-15">desert activities</div>
+              </div>
+            </div>
+            <div className="flex gap-35 w-full *:w-full *:flex-1 mt-10">
+              <div className="space-y-6">
+                <p className="font-semibold tracking-wider text-sm leading-none">
+                  Offered Capsules® activity have different levels of
+                  difficulty:
+                </p>
+                <ul className="discover-levels space-y-4">
+                  <li className="space-y-4">
+                    <div className="flex gap-x-2 justify-between items-start text-light-brown">
+                      <p className="text-[27px] font-medium">Easy</p>
+                      <p>3-5h duration</p>
+                    </div>
+                    <div className="bg-pale-white/40 relative overflow-hidden h-[2px] w-full">
+                      <div className="level-1 absolute top-0 left-0 h-full bg-pale-white" />{" "}
+                    </div>
+                  </li>
+                  <li className="space-y-4">
+                    <div className="flex gap-x-2 justify-between items-start text-light-brown">
+                      <p className="text-[27px] font-medium">Medium</p>
+                      <p>8-12h duration</p>
+                    </div>
+                    <div className="bg-pale-white/40 relative overflow-hidden h-[2px] w-full">
+                      <div className="level-2 absolute top-0 left-0 h-full bg-pale-white" />
+                    </div>
+                  </li>
+                  <li className="space-y-4">
+                    <div className="flex gap-x-2 justify-between items-start text-light-brown">
+                      <p className="text-[27px] font-medium">Hard</p>
+                      <p>24h duration</p>
+                    </div>
+                    <div className="bg-pale-white/40 relative overflow-hidden h-[2px] w-full">
+                      <div className="level-3 absolute top-0 left-0 h-full bg-pale-white" />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div className="text-[38px] font-medium tracking-tight leading-10 text-light-brown text-nowrap">
+                We want to make sure your stay is <br />
+                exciting and enjoyable. That’s why we <br />
+                offer a variety of activities with different <br />
+                levels of engagement. Whether you seek <br />
+                thrills or tranquility, there’s something for <br />
+                everyone to make your desert stay truly <br />
+                memorable.
               </div>
             </div>
           </section>
