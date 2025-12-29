@@ -406,7 +406,7 @@ export default function Home() {
         scrollTrigger: {
           trigger: discoverLevelsContainer,
           start: "top center",
-          end: "+=10%",
+          end: "+=1.5%",
           scrub: true,
         },
       })
@@ -414,6 +414,26 @@ export default function Home() {
       .to(levelOne, { width: "45%", ease: "power2.in" }, "start")
       .to(levelTwo, { width: "85%", ease: "power2.in" }, "start")
       .to(levelThree, { width: "65%", ease: "power2.in" }, "start");
+
+    // Horizontal scroll animation on Activity section
+    const activityContainer = document.querySelector(".activity-container");
+    if (!activityContainer) return;
+    const childElements = activityContainer.children;
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: activityContainer,
+          pin: true,
+          scrub: true,
+          markers: true,
+        },
+      })
+      .addLabel("start")
+      .to(
+        childElements,
+        { xPercent: -100 * (childElements.length - 1) },
+        "start"
+      );
   });
 
   return (
@@ -778,6 +798,113 @@ export default function Home() {
               </div>
             </div>
           </section>
+          <section className="mt-50">
+            <div className="activity-container h-dvh w-full overflow-hidden flex gap-2 py-2">
+              <div className="activity-1 h-full w-[1200px] flex-shrink-0 rounded-[50px] overflow-hidden relative">
+                <Image
+                  src="/img/activities-1.png"
+                  alt="Activities boggy rides"
+                  width={500}
+                  height={500}
+                  className="w-full h-full absolute top-0 left-0 z-0"
+                />
+                <div className="absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
+                  <div className="flex justify-between items-start">
+                    <h3 className="text-4xl font-semibold">
+                      Buggy tours <br /> in the desert
+                    </h3>
+                    <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
+                      Easy
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <p className="text-sm font-semibold">
+                      Explore the terrain on a guided buggy tour that takes
+                      <br />
+                      you through the deserts vast&apos;s and open landscapes.
+                    </p>
+                    <div className="flex gap-x-[4px]">
+                      <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                        <span>01</span>
+                      </div>
+                      <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                        <span>03</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="activity-2 h-full w-[1200px] flex-shrink-0 rounded-[50px] overflow-hidden relative">
+                <Image
+                  src="/img/activities-2.png"
+                  alt="Activities sandy hikes"
+                  width={500}
+                  height={500}
+                  className="w-full h-full absolute top-0 left-0 z-0"
+                />
+                <div className=" absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
+                  <div className="flex justify-between items-start">
+                    <h3 className="text-4xl font-semibold">
+                      Breathtaking <br /> desert hikes
+                    </h3>
+                    <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
+                      Medium
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <p className="text-sm font-semibold">
+                      Set out on a hike that offers clear trails, stunning
+                      views, <br />
+                      and a closer look at the unique desert environment.
+                    </p>
+                    <div className="flex gap-x-[4px]">
+                      <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                        <span>02</span>
+                      </div>
+                      <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                        <span>03</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="activity-3 h-full w-[1200px] flex-shrink-0 rounded-[50px] overflow-hidden">
+                <Image
+                  src="/img/activities-3.png"
+                  alt="Activities rock climbing"
+                  width={500}
+                  height={500}
+                  className="w-full h-full absolute top-0 left-0 z-0"
+                />
+                <div className=" absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
+                  <div className="flex justify-between items-start">
+                    <h3 className="text-4xl font-semibold">
+                      Exciting group <br /> rock climbing
+                    </h3>
+                    <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
+                      Hard
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <p className="text-sm font-semibold">
+                      Climbing session on natural sandstone formations, designed
+                      <br />
+                      to be both challenging and safe while fostering teamwork.
+                    </p>
+                    <div className="flex gap-x-[4px]">
+                      <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                        <span>03</span>
+                      </div>
+                      <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                        <span>03</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div className="h-dvh w-full bg-amber-600" />
         </div>
       </div>
     </div>
