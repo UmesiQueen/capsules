@@ -425,13 +425,12 @@ export default function Home() {
           trigger: activityContainer,
           pin: true,
           scrub: true,
-          markers: true,
         },
       })
       .addLabel("start")
       .to(
         childElements,
-        { xPercent: -100 * (childElements.length - 1) },
+        { x: -1032 * (childElements.length - 1) },
         "start"
       );
   });
@@ -439,8 +438,8 @@ export default function Home() {
   return (
     <div id="smooth-wrapper">
       <div id="smooth-content">
-        <div className="px-2 font-sans from-[#181717] to-[#22201f] bg-gradient-to-b">
-          <section className="py-2 mb-20">
+        <div className="font-sans from-[#181717] to-[#22201f] bg-gradient-to-b">
+          <section className="p-2 mb-20">
             <div className="min-h-[calc(100vh-16px)] rounded-[50px] relative overflow-hidden">
               <div className="hero h-full w-full bg-[url('/img/cap1.png')] scale-[1] bg-no-repeat bg-center bg-cover absolute top-0 left-0 saturate-[120%]" />
               <video
@@ -480,7 +479,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="px-7 pb-10">
+          <section className="px-10 mb-50">
             <div className="text-[80px] tracking-tighter py-36">
               <TextRevealAnimation>
                 <p>Welcome to a world of wild California</p>
@@ -491,7 +490,7 @@ export default function Home() {
                 <p>destination on the United States.</p>
               </TextRevealAnimation>
             </div>
-            <div className="flex items-center justify-between *:w-full *:flex-grow pb-40">
+            <div className="flex items-center justify-between *:w-full *:flex-grow">
               <div className="inline-flex">
                 <Image
                   src={"/img/welcome-1.png"}
@@ -518,7 +517,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="px-5 mb-20">
+          <section className="px-7 mb-20">
             <div className="choose-container">
               <p className="choose-sub text-sm pb-8">
                 Discover available Capsules®
@@ -553,82 +552,84 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="capsule-container relative h-dvh">
-            <div className="card1 absolute left-0 top-0 h-full w-full z-0">
-              <div className="h-dvh w-full relative overflow-hidden flex items-center justify-center">
-                <div className="capsule-marquee w-full flex items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
-                  <Marquee autoFill={true} speed={150}>
-                    <Image
-                      src={"/img/capsule.svg"}
-                      alt="Capsules Logo"
-                      width={500}
-                      height={500}
-                      className="h-48 w-fit px-5"
-                    />
-                  </Marquee>
+          <section className="p-2">
+            <div className="capsule-container relative h-dvh">
+              <div className="card1 absolute left-0 top-0 h-full w-full z-0">
+                <div className="h-dvh w-full relative overflow-hidden flex items-center justify-center">
+                  <div className="capsule-marquee w-full flex items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
+                    <Marquee autoFill={true} speed={150}>
+                      <Image
+                        src={"/img/capsule.svg"}
+                        alt="Capsules Logo"
+                        width={500}
+                        height={500}
+                        className="h-48 w-fit px-5"
+                      />
+                    </Marquee>
+                  </div>
+                  {/* Classic */}
+                  <Capsule
+                    title={"Classic"}
+                    description={
+                      "Classic Capsule® boasts refined aesthetics and a modern interior, creating an intimate retreat in a desert landscape."
+                    }
+                    features={[
+                      "22m2",
+                      "King Size",
+                      "Available",
+                      "Available",
+                      "Available",
+                      "None",
+                    ]}
+                    imgSrc={"/img/cap3.png"}
+                    cost={2000}
+                  />
                 </div>
-                {/* Classic */}
+              </div>
+              {/* Terrance */}
+              <div className="card2 absolute left-0 top-0 h-full w-full z-1 translate-y-[100dvh] py-2">
                 <Capsule
-                  title={"Classic"}
+                  title={"Terrance"}
                   description={
-                    "Classic Capsule® boasts refined aesthetics and a modern interior, creating an intimate retreat in a desert landscape."
+                    "The most prestige capsule with the biggest terrace and jacuzzi with an amazing view of Los Angeles."
                   }
                   features={[
-                    "22m2",
+                    "30m2",
+                    "King Size",
+                    "Available",
+                    "Available",
+                    "Available",
+                    "Available",
+                  ]}
+                  imgSrc={"/img/cap2.png"}
+                  cost={2500}
+                />
+              </div>
+              {/* Desert */}
+              <div className=" card3 absolute left-0 top-0 h-full w-full z-2 translate-y-[100dvh] py-2">
+                <Capsule
+                  title={"Desert"}
+                  description={
+                    "With its striking architecture and upscale amenities, Desert Capsule® offers an exclusive retreat in the heart of the desert."
+                  }
+                  features={[
+                    "28m2",
                     "King Size",
                     "Available",
                     "Available",
                     "Available",
                     "None",
                   ]}
-                  imgSrc={"/img/cap3.png"}
-                  cost={2000}
+                  imgSrc={"/img/cap1.png"}
+                  cost={2250}
                 />
               </div>
-            </div>
-            {/* Terrance */}
-            <div className="card2 absolute left-0 top-0 h-full w-full z-1 translate-y-[100dvh] py-2">
-              <Capsule
-                title={"Terrance"}
-                description={
-                  "The most prestige capsule with the biggest terrace and jacuzzi with an amazing view of Los Angeles."
-                }
-                features={[
-                  "30m2",
-                  "King Size",
-                  "Available",
-                  "Available",
-                  "Available",
-                  "Available",
-                ]}
-                imgSrc={"/img/cap2.png"}
-                cost={2500}
-              />
-            </div>
-            {/* Desert */}
-            <div className=" card3 absolute left-0 top-0 h-full w-full z-2 translate-y-[100dvh] py-2">
-              <Capsule
-                title={"Desert"}
-                description={
-                  "With its striking architecture and upscale amenities, Desert Capsule® offers an exclusive retreat in the heart of the desert."
-                }
-                features={[
-                  "28m2",
-                  "King Size",
-                  "Available",
-                  "Available",
-                  "Available",
-                  "None",
-                ]}
-                imgSrc={"/img/cap1.png"}
-                cost={2250}
-              />
-            </div>
-            <div className="scroll-indicator absolute top-1/2 bottom-1/2 -translate-y-1/2 right-5 z-10">
-              <p className="text-[40px] text-white/50">(Scroll)</p>
-            </div>
-            <div className="scroll-indicator absolute bottom-15 right-5 w-80 h-[2px] rounded-md bg-white/30 z-10 inline-flex overflow-hidden">
-              <div className="capsule-progress w-0 h-full bg-white" />
+              <div className="scroll-indicator absolute top-1/2 bottom-1/2 -translate-y-1/2 right-5 z-10">
+                <p className="text-[40px] text-white/50">(Scroll)</p>
+              </div>
+              <div className="scroll-indicator absolute bottom-15 right-5 w-80 h-[2px] rounded-md bg-white/30 z-10 inline-flex overflow-hidden">
+                <div className="capsule-progress w-0 h-full bg-white" />
+              </div>
             </div>
           </section>
           <section className="flex flex-col items-center justify-center text-center h-dvh">
@@ -655,8 +656,8 @@ export default function Home() {
                 </div>
               </Marquee>
             </div>
-            <div className="capsule-carousel py-2 h-dvh">
-              <div className="overflow-hidden flex *:flex-grow flex-wrap w-full h-full *:h-[calc(100dvh-16px)] *:w-[calc(50vw-20px)] *:overflow-hidden *:rounded-[50px] *:relative">
+            <div className="capsule-carousel p-2 h-dvh">
+              <div className="overflow-hidden flex *:flex-grow flex-wrap w-full h-full *:h-full *:w-[calc(50vw-20px)] *:overflow-hidden *:rounded-[50px] *:relative">
                 <div className="item-1 bg-bokara-grey">
                   <div className="flex flex-col justify-between h-full w-full py-10 px-6">
                     <div className="text-light-brown text-[38px] tracking-wide leading-10 font-semibold w-fit">
@@ -799,104 +800,112 @@ export default function Home() {
             </div>
           </section>
           <section className="mt-50">
-            <div className="activity-container h-dvh w-full overflow-hidden flex gap-2 py-2">
-              <div className="activity-1 h-full w-[1200px] flex-shrink-0 rounded-[50px] overflow-hidden relative">
-                <Image
-                  src="/img/activities-1.png"
-                  alt="Activities boggy rides"
-                  width={500}
-                  height={500}
-                  className="w-full h-full absolute top-0 left-0 z-0"
-                />
-                <div className="absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-4xl font-semibold">
-                      Buggy tours <br /> in the desert
-                    </h3>
-                    <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
-                      Easy
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <p className="text-sm font-semibold">
-                      Explore the terrain on a guided buggy tour that takes
-                      <br />
-                      you through the deserts vast&apos;s and open landscapes.
-                    </p>
-                    <div className="flex gap-x-[4px]">
-                      <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
-                        <span>01</span>
-                      </div>
-                      <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
-                        <span>03</span>
+            <div className="activity-container h-dvh w-[3600px] overflow-hidden flex gap-2 p-2">
+              <div className="activity-1 h-full w-1/3">
+                <div className="rounded-[50px] overflow-hidden relative h-full w-full">
+                  <Image
+                    src="/img/activities-1.png"
+                    alt="Activities boggy rides"
+                    width={500}
+                    height={500}
+                    className="w-full h-full absolute top-0 left-0 z-0"
+                  />
+                  <div className="absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
+                    <div className="flex justify-between items-start">
+                      <h3 className="text-4xl font-semibold">
+                        Buggy tours <br /> in the desert
+                      </h3>
+                      <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
+                        Easy
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="activity-2 h-full w-[1200px] flex-shrink-0 rounded-[50px] overflow-hidden relative">
-                <Image
-                  src="/img/activities-2.png"
-                  alt="Activities sandy hikes"
-                  width={500}
-                  height={500}
-                  className="w-full h-full absolute top-0 left-0 z-0"
-                />
-                <div className=" absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-4xl font-semibold">
-                      Breathtaking <br /> desert hikes
-                    </h3>
-                    <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
-                      Medium
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <p className="text-sm font-semibold">
-                      Set out on a hike that offers clear trails, stunning
-                      views, <br />
-                      and a closer look at the unique desert environment.
-                    </p>
-                    <div className="flex gap-x-[4px]">
-                      <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
-                        <span>02</span>
-                      </div>
-                      <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
-                        <span>03</span>
+                    <div className="flex justify-between items-center">
+                      <p className="text-sm font-semibold">
+                        Explore the terrain on a guided buggy tour that takes
+                        <br />
+                        you through the deserts vast&apos;s and open landscapes.
+                      </p>
+                      <div className="flex gap-x-[4px]">
+                        <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>01</span>
+                        </div>
+                        <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>03</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="activity-3 h-full w-[1200px] flex-shrink-0 rounded-[50px] overflow-hidden">
-                <Image
-                  src="/img/activities-3.png"
-                  alt="Activities rock climbing"
-                  width={500}
-                  height={500}
-                  className="w-full h-full absolute top-0 left-0 z-0"
-                />
-                <div className=" absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-4xl font-semibold">
-                      Exciting group <br /> rock climbing
-                    </h3>
-                    <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
-                      Hard
+              <div className="activity-2 h-full w-1/3">
+                <div className="rounded-[50px] overflow-hidden relative h-full w-full">
+                  <Image
+                    src="/img/activities-2.png"
+                    alt="Activities sandy hikes"
+                    width={500}
+                    height={500}
+                    className="w-full h-full absolute top-0 left-0 z-0"
+                  />
+                  <div className=" absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
+                    <div className="flex justify-between items-start">
+                      <h3 className="text-4xl font-semibold">
+                        Breathtaking <br /> desert hikes
+                      </h3>
+                      <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
+                        Medium
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <p className="text-sm font-semibold">
+                        Set out on a hike that offers clear trails, stunning
+                        views, <br />
+                        and a closer look at the unique desert environment.
+                      </p>
+                      <div className="flex gap-x-[4px]">
+                        <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>02</span>
+                        </div>
+                        <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>03</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <p className="text-sm font-semibold">
-                      Climbing session on natural sandstone formations, designed
-                      <br />
-                      to be both challenging and safe while fostering teamwork.
-                    </p>
-                    <div className="flex gap-x-[4px]">
-                      <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
-                        <span>03</span>
+                </div>
+              </div>
+              <div className="activity-3 h-full w-1/3">
+                <div className="rounded-[50px] overflow-hidden relative h-full w-full">
+                  <Image
+                    src="/img/activities-3.png"
+                    alt="Activities rock climbing"
+                    width={500}
+                    height={500}
+                    className="w-full h-full absolute top-0 left-0 z-0"
+                  />
+                  <div className=" absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
+                    <div className="flex justify-between items-start">
+                      <h3 className="text-4xl font-semibold">
+                        Exciting group <br /> rock climbing
+                      </h3>
+                      <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
+                        Hard
                       </div>
-                      <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
-                        <span>03</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <p className="text-sm font-semibold">
+                        Climbing session on natural sandstone formations,
+                        designed
+                        <br />
+                        to be both challenging and safe while fostering
+                        teamwork.
+                      </p>
+                      <div className="flex gap-x-[4px]">
+                        <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>03</span>
+                        </div>
+                        <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                          <span>03</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -904,7 +913,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <div className="h-dvh w-full bg-amber-600" />
+          <div className="h-dvh w-full" />
         </div>
       </div>
     </div>

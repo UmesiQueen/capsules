@@ -150,7 +150,7 @@ React.useEffect(() => {
   return (
     <div
       ref={capsuleRef}
-      className="capsule-card relative overflow-hidden rounded-[50px] h-[calc(100dvh-16px)] w-full"
+      className="capsule-card relative overflow-hidden rounded-[50px] h-full w-full"
     >
       <div
         style={{ backgroundImage: `url(${imgSrc})` }}
