@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollSmoother, ScrollTrigger, SplitText } from "gsap/all";
 import TextRevealAnimation from "@/components/TextRevealAnimation";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   useGSAP(() => {
@@ -939,6 +940,86 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Reviews */}
+          <section className="p-10">
+            <p className="text-xs pb-8 font-semibold">Do people like us?</p>
+            <div className="relative min-h-[520px]">
+              {/* 1 review */}
+              <div className="absolute top-0 left-0">
+                <div className="space-y-10">
+                  <div className="text-[80px] tracking-tighter leading-[1]">
+                    <div>Staying at Capsule® in the</div>
+                    <div>California desert redefined my</div>
+                    <div>retreat — modern design meets</div>
+                    <div>nature, and every sunset feels</div>
+                    <div>like a serene masterpiece.</div>
+                  </div>
+                  <div>
+                    <div className="flex gap-5 items-center">
+                      <div className="w-15 aspect-square bg-red-500 rounded-full" />
+                      <div>
+                        Marcus Simpson <br /> (New York)
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* 2 review */}
+              <div className="absolute top-0 left-0">
+                <div className="space-y-10">
+                  <div className="text-[80px] tracking-tighter leading-[1]">
+                    <div> Capsule® offered the perfect</div>
+                    <div>escape — sleek, modern spaces</div>
+                    <div>surrounded by desert stillness.</div>
+                    <div>Each moment felt peaceful,</div>
+                    <div>grounded, and truly unique.</div>
+                  </div>
+                  <div>
+                    <div className="flex gap-5 items-center">
+                      <div className="w-15 aspect-square bg-pink-500 rounded-full" />
+                      <div>
+                        Lena Morrison <br /> (Los Angeles)
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* 3 review */}
+              <div className="absolute top-0 left-0">
+                <div className="space-y-10">
+                  <div className="text-[80px] tracking-tighter leading-[1]">
+                    <div>Capsule® was the perfect</div>
+                    <div>desert hideaway — stylish,</div>
+                    <div>peaceful, and fully surrounded</div>
+                    <div>by stunning views day and</div>
+                    <div>night.</div>
+                  </div>
+                  <div>
+                    <div className="flex gap-5 items-center">
+                      <div className="w-15 aspect-square bg-amber-500 rounded-full" />
+                      <div>
+                        Jason Whitaker <br /> (San Francisco)
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-5 justify-between items-center py-5">
+              <div className="flex gap-2">
+                <Button variant="ghost" className="border-2 rounded-full p-3">
+                  ←
+                </Button>
+                <Button variant="ghost" className="border-2 rounded-full p-3">
+                  →
+                </Button>
+              </div>
+              <div className="review-scroll-indicator w-100 h-[1.5px] rounded-md bg-white/30 z-10 inline-flex overflow-hidden">
+                <div className="review-progress w-1/2 h-full bg-white" />
               </div>
             </div>
           </section>
