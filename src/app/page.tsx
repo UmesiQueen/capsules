@@ -416,23 +416,37 @@ export default function Home() {
       .to(levelThree, { width: "65%", ease: "power2.in" }, "start");
 
     // Horizontal scroll animation on Activity section
-    const activityContainer = document.querySelector(".activity-container");
+    const activityContainer = document.querySelector(
+      ".activity-container"
+    ) as HTMLElement;
     if (!activityContainer) return;
-    const childElements = activityContainer.children;
-    gsap
+    const childActivityElements = Array.from(
+      activityContainer.children
+    ) as HTMLElement[];
+
+    const activityTl = gsap
       .timeline({
         scrollTrigger: {
           trigger: activityContainer,
           pin: true,
           scrub: true,
+          invalidateOnRefresh: true,
         },
       })
       .addLabel("start")
       .to(
-        childElements,
-        { x: -1032 * (childElements.length - 1) },
+        childActivityElements,
+        {
+          x: () =>
+            -(activityContainer.scrollWidth - activityContainer.offsetWidth),
+        },
         "start"
       );
+
+    childActivityElements.forEach((element) => {
+      const image = element.querySelector(".activity-img") as HTMLDivElement;
+      activityTl.fromTo(image, { x: 0 }, { x: "-10%" }, "start");
+    });
   });
 
   return (
@@ -799,17 +813,22 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="mt-50">
-            <div className="activity-container h-dvh w-[3600px] overflow-hidden flex gap-2 p-2">
-              <div className="activity-1 h-full w-1/3">
+          <section className="mt-50 pb-50">
+            <div className="activity-container h-dvh w-full overflow-hidden flex gap-2 p-2">
+              <div
+                className="activity-1 h-full w-screen flex-shrink-0"
+                style={{ width: "80vw" }}
+              >
                 <div className="rounded-[50px] overflow-hidden relative h-full w-full">
-                  <Image
-                    src="/img/activities-1.png"
-                    alt="Activities boggy rides"
-                    width={500}
-                    height={500}
-                    className="w-full h-full absolute top-0 left-0 z-0"
-                  />
+                  <div className="activity-img w-full h-full">
+                    <Image
+                      src="/img/activities-1.png"
+                      alt="Activities boggy rides"
+                      width={500}
+                      height={500}
+                      className="object-cover object-center scale-[1.2] w-full h-full"
+                    />
+                  </div>
                   <div className="absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
                     <div className="flex justify-between items-start">
                       <h3 className="text-4xl font-semibold">
@@ -837,15 +856,20 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="activity-2 h-full w-1/3">
+              <div
+                className="activity-2 h-full w-screen flex-shrink-0"
+                style={{ width: "80vw" }}
+              >
                 <div className="rounded-[50px] overflow-hidden relative h-full w-full">
-                  <Image
-                    src="/img/activities-2.png"
-                    alt="Activities sandy hikes"
-                    width={500}
-                    height={500}
-                    className="w-full h-full absolute top-0 left-0 z-0"
-                  />
+                  <div className="activity-img w-full h-full">
+                    <Image
+                      src="/img/activities-2.png"
+                      alt="Activities sandy hikes"
+                      width={500}
+                      height={500}
+                      className="object-fit object-top scale-[1.2] w-full h-full"
+                    />
+                  </div>
                   <div className=" absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
                     <div className="flex justify-between items-start">
                       <h3 className="text-4xl font-semibold">
@@ -873,15 +897,20 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="activity-3 h-full w-1/3">
+              <div
+                className="activity-3  h-full w-screen flex-shrink-0"
+                style={{ width: "80vw" }}
+              >
                 <div className="rounded-[50px] overflow-hidden relative h-full w-full">
-                  <Image
-                    src="/img/activities-3.png"
-                    alt="Activities rock climbing"
-                    width={500}
-                    height={500}
-                    className="w-full h-full absolute top-0 left-0 z-0"
-                  />
+                  <div className="activity-img w-full h-full">
+                    <Image
+                      src="/img/activities-3.png"
+                      alt="Activities rock climbing"
+                      width={500}
+                      height={500}
+                      className="object-cover object-center scale-[1.2] w-full h-full"
+                    />
+                  </div>
                   <div className=" absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
                     <div className="flex justify-between items-start">
                       <h3 className="text-4xl font-semibold">
