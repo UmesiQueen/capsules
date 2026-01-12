@@ -1,6 +1,7 @@
 import * as React from "react";
 import Image from "next/image";
-import { gsap, useGSAP } from "@/utils/gsap";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 interface CapsuleProps {
   title: string;
