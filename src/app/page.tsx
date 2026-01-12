@@ -448,6 +448,61 @@ export default function Home() {
       const image = element.querySelector(".activity-img") as HTMLDivElement;
       activityTl.fromTo(image, { x: 0 }, { x: "-10%" }, "start");
     });
+
+    // review section
+    const firstReview = document.querySelectorAll(".review-1");
+    const secondReview = document.querySelectorAll(".review-2");
+    const thirdReview = document.querySelectorAll(".review-3");
+    const nextReviewBtn = document.getElementById("next-review-btn");
+    const prevReviewBtn = document.getElementById("prev-review-btn");
+
+    let currentReview = 1; // Track current position (1, 2, or 3)
+
+    const nextReviewTl = gsap
+      .timeline({
+        paused: true,
+        onUpdate: () => {
+          const progressPercentage = (currentReview / 3) * 100;
+          gsap.to(".review-progress", {
+            width: `${progressPercentage}%`,
+          });
+        },
+      })
+      .addLabel("review1") // First review position
+      .addLabel("Exit1Review")
+      .to(firstReview, { y: "-120%", duration: 0.35 }, "Exit1Review")
+      .addLabel("Enter2Review", ">")
+      .fromTo(
+        secondReview,
+        { y: "-120%" },
+        { y: "0%", duration: 0.35 },
+        "Enter2Review"
+      )
+      .addLabel("review2") // Second review position
+      .addLabel("Exit2Review")
+      .to(secondReview, { y: "-120%", duration: 0.35 }, "Exit2Review")
+      .addLabel("Enter3Review", ">")
+      .fromTo(
+        thirdReview,
+        { y: "-120%" },
+        { y: "0%", duration: 0.35 },
+        "Enter3Review"
+      )
+      .addLabel("review3"); // Third review position
+
+    nextReviewBtn?.addEventListener("click", () => {
+      if (currentReview < 3) {
+        currentReview++;
+        nextReviewTl.tweenTo(`review${currentReview}`);
+      }
+    });
+
+    prevReviewBtn?.addEventListener("click", () => {
+      if (currentReview > 1) {
+        currentReview--;
+        nextReviewTl.tweenTo(`review${currentReview}`);
+      }
+    });
   });
 
   return (
@@ -945,61 +1000,76 @@ export default function Home() {
           </section>
 
           {/* Reviews */}
-          <section className="p-10">
+          <section className="reviews py-5 px-10 ">
             <p className="text-xs pb-8 font-semibold">Do people like us?</p>
             <div className="relative min-h-[520px]">
-              {/* 1 review */}
-              <div className="absolute top-0 left-0">
-                <div className="space-y-10">
+              <div>
+                <div className="space-y-5">
                   <div className="text-[80px] tracking-tighter leading-[1]">
-                    <div>Staying at Capsule® in the</div>
-                    <div>California desert redefined my</div>
-                    <div>retreat — modern design meets</div>
-                    <div>nature, and every sunset feels</div>
-                    <div>like a serene masterpiece.</div>
+                    {/* line 1 */}
+                    <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
+                      <div className="review-1">Staying at Capsule® in the</div>
+                      <div className="review-2">
+                        Capsule® offered the perfect
+                      </div>
+                      <div className="review-3">Capsule® was the perfect</div>
+                    </div>
+                    {/* line 2 */}
+                    <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
+                      <div className="review-1">
+                        California desert redefined my
+                      </div>
+                      <div className="review-2">
+                        escape — sleek, modern spaces
+                      </div>
+                      <div className="review-3">desert hideaway — stylish,</div>
+                    </div>
+                    {/* line 3 */}
+                    <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
+                      <div className="review-1">
+                        retreat — modern design meets
+                      </div>
+                      <div className="review-2">
+                        surrounded by desert stillness.
+                      </div>
+                      <div className="review-3">
+                        peaceful, and fully surrounded
+                      </div>
+                    </div>
+                    {/* line 4 */}
+                    <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
+                      <div className="review-1">
+                        nature, and every sunset feels
+                      </div>
+                      <div className="review-2">Each moment felt peaceful,</div>
+                      <div className="review-3">by stunning views day and</div>
+                    </div>
+                    {/* line 5 */}
+                    <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
+                      <div className="review-1">like a serene masterpiece.</div>
+                      <div className="review-2">
+                        grounded, and truly unique.
+                      </div>
+                      <div className="review-3">night.</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="flex gap-5 items-center">
-                      <div className="w-15 aspect-square bg-red-500 rounded-full" />
+                  <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
+                    {/* review 1 profile */}
+                    <div className="review-1 flex gap-5 items-center">
+                      <div className="w-15 bg-pink-700 aspect-square rounded-full" />
+                      <div>
+                        Queen Umesi <br /> (Lagos, Nigeria)
+                      </div>
+                    </div>
+                    {/* review 2 profile */}
+                    <div className="review-2 flex gap-5 items-center">
+                      <div className="w-15 bg-red-500 aspect-square rounded-full" />
                       <div>
                         Marcus Simpson <br /> (New York)
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              {/* 2 review */}
-              <div className="absolute top-0 left-0">
-                <div className="space-y-10">
-                  <div className="text-[80px] tracking-tighter leading-[1]">
-                    <div> Capsule® offered the perfect</div>
-                    <div>escape — sleek, modern spaces</div>
-                    <div>surrounded by desert stillness.</div>
-                    <div>Each moment felt peaceful,</div>
-                    <div>grounded, and truly unique.</div>
-                  </div>
-                  <div>
-                    <div className="flex gap-5 items-center">
-                      <div className="w-15 aspect-square bg-pink-500 rounded-full" />
-                      <div>
-                        Lena Morrison <br /> (Los Angeles)
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* 3 review */}
-              <div className="absolute top-0 left-0">
-                <div className="space-y-10">
-                  <div className="text-[80px] tracking-tighter leading-[1]">
-                    <div>Capsule® was the perfect</div>
-                    <div>desert hideaway — stylish,</div>
-                    <div>peaceful, and fully surrounded</div>
-                    <div>by stunning views day and</div>
-                    <div>night.</div>
-                  </div>
-                  <div>
-                    <div className="flex gap-5 items-center">
+                    {/* review 3 profile */}
+                    <div className="review-3 flex gap-5 items-center">
                       <div className="w-15 aspect-square bg-amber-500 rounded-full" />
                       <div>
                         Jason Whitaker <br /> (San Francisco)
@@ -1011,15 +1081,23 @@ export default function Home() {
             </div>
             <div className="flex gap-5 justify-between items-center py-5">
               <div className="flex gap-2">
-                <Button variant="ghost" className="border-2 rounded-full p-3">
+                <Button
+                  variant="ghost"
+                  className="border-2 rounded-full p-3"
+                  id="prev-review-btn"
+                >
                   ←
                 </Button>
-                <Button variant="ghost" className="border-2 rounded-full p-3">
+                <Button
+                  variant="ghost"
+                  className="border-2 rounded-full p-3"
+                  id="next-review-btn"
+                >
                   →
                 </Button>
               </div>
               <div className="review-scroll-indicator w-100 h-[1.5px] rounded-md bg-white/30 z-10 inline-flex overflow-hidden">
-                <div className="review-progress w-1/2 h-full bg-white" />
+                <div className="review-progress w-1/3 h-full bg-white" />
               </div>
             </div>
           </section>
