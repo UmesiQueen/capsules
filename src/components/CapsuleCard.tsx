@@ -170,11 +170,13 @@ React.useEffect(() => {
         Your browser does not support the video tag.
       </video>
       <div className="flex flex-col *:w-full *:h-full *:flex-grow h-full w-full *:flex *:items-end absolute z-3">
-        <div className="pl-7">
-          <p className="card-title text-[80px] leading-22">{title} Capsule®</p>
+        <div className="pl-3 md:pl-7">
+          <p className="card-title text-[clamp(20px,2.5rem,80px)] leading-22">
+            {title} Capsule®
+          </p>
         </div>
         <div>
-          <div className="flex gap-5 items-center mb-10 ml-4">
+          <div className="flex flex-col md:flex-row gap-5 md:items-center md:mb-10 md:ml-4 px-3 pb-10 md:p-0">
             <div className="h-10 w-10 inline-flex justify-center items-center relative">
               <button className="dialog-btn group relative h-10 w-10 overflow-hidden bg-light-brown rounded-full inline-flex items-center justify-center cursor-pointer">
                 <div className="absolute inset-0 bg-[#c3baad] transition-all duration-700 ease-in-out [clip-path:circle(0%_at_50%_50%)] group-hover:[clip-path:circle(150%_at_50%_50%)]" />
@@ -269,7 +271,7 @@ React.useEffect(() => {
                 </div>
               </div>
             </div>
-            <p className="card-description text-sm font-semibold leading-[20px] tracking-[-.2] w-[385px]">
+            <p className="card-description text-sm font-semibold leading-[20px] tracking-[-.2] w-full md:w-[385px]">
               {description}
             </p>
           </div>

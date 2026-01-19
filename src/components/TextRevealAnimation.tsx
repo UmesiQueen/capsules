@@ -20,21 +20,19 @@ export default function TextRevealAnimation({
       const container = containerRef.current;
       const lines = Array.from(container.children) as HTMLElement[];
 
-      lines.forEach((line, index) => {
+      lines.forEach((line) => {
         const cloned = line.cloneNode(true) as HTMLElement;
         cloned.classList.add("clip-text-clone");
         line.appendChild(cloned);
         line.classList.add("clip-text-original");
 
-        // Calculate staggered start position
-        const startPosition = 90 - index * 10;
 
         gsap.to(cloned, {
           clipPath: "inset(0 0 0% 0)",
           scrollTrigger: {
             trigger: cloned,
-            start: `top ${startPosition}%`,
-            end: `bottom ${startPosition - 10}%`,
+            start: "top 70%",
+            end: "bottom 50%",
             scrub: true,
           },
         });

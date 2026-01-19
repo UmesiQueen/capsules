@@ -5,7 +5,7 @@ import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollSmoother, ScrollTrigger, SplitText } from "gsap/all";
+import { ScrollTrigger, SplitText } from "gsap/all";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
@@ -61,7 +61,7 @@ export default function Home() {
   }, []);
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+    gsap.registerPlugin(ScrollTrigger, SplitText);
 
     // hero section background zoom effect
     const hero = document.querySelector(".hero") as HTMLDivElement;
@@ -101,13 +101,13 @@ export default function Home() {
     // capsule cards content animation
     const contentRevealAnimation = (card: string) => {
       const capsuleDialogBtn = document.querySelector(
-        `.capsule-container .${card} .dialog-btn`
+        `.capsule-container .${card} .dialog-btn`,
       );
       const capsuleCardDescription = document.querySelector(
-        `.capsule-container .${card} .card-description`
+        `.capsule-container .${card} .card-description`,
       );
       const capsuleCardTitle = document.querySelector(
-        `.capsule-container .${card} .card-title`
+        `.capsule-container .${card} .card-title`,
       );
       const splitCardTitle = SplitText.create(capsuleCardTitle, {
         type: "chars",
@@ -122,7 +122,7 @@ export default function Home() {
           capsuleCardDescription,
           { x: "20%", opacity: 0 },
           { x: "0%", opacity: 1, ease: "power4.out" },
-          "fadeIn"
+          "fadeIn",
         )
         .fromTo(
           capsuleDialogBtn,
@@ -133,7 +133,7 @@ export default function Home() {
             width: "40px",
             ease: "power4.out",
           },
-          "fadeIn"
+          "fadeIn",
         );
       return textRevealTl;
     };
@@ -147,7 +147,7 @@ export default function Home() {
       .fromTo(
         ".scroll-indicator",
         { autoAlpha: 0, x: 20 },
-        { autoAlpha: 1, x: 0 }
+        { autoAlpha: 1, x: 0 },
       );
 
     const capsuleContainer = document.querySelector(".capsule-container");
@@ -180,25 +180,25 @@ export default function Home() {
           width: "100%",
           borderRadius: "50px",
         },
-        "card1OnEnter"
+        "card1OnEnter",
       )
       .fromTo(
         ".capsule-container .card1 .capsule-marquee",
         { opacity: 1 },
         { opacity: 0 },
-        "card1OnEnter"
+        "card1OnEnter",
       )
       .fromTo(
         ".capsule-container .card1 .card-img",
         { scale: 1.3 },
         { scale: 1 },
-        "card1OnEnter"
+        "card1OnEnter",
       )
       .fromTo(
         ".capsule-container .card1 .card-smoke",
         { opacity: 0 },
         { opacity: 0.5 },
-        "card1OnEnter"
+        "card1OnEnter",
       )
       .addLabel("contentReveal")
       .to(
@@ -214,32 +214,32 @@ export default function Home() {
             scrollIndicator.reverse();
           },
         },
-        "contentReveal"
+        "contentReveal",
       )
       .addLabel("card1OnLeave")
       .to(
         ".capsule-container .card1 .capsule-card",
         { scale: 0.9 },
-        "card1OnLeave"
+        "card1OnLeave",
       )
       .fromTo(
         ".capsule-container .card1 .overlay",
         { autoAlpha: 0 },
         { autoAlpha: 1 },
-        "card1OnLeave"
+        "card1OnLeave",
       )
       .addLabel("card2OnEnter", "<")
       .fromTo(
         ".capsule-container .card2",
         { y: "100dvh" },
         { y: "0dvh" },
-        "card2OnEnter"
+        "card2OnEnter",
       )
       .fromTo(
         ".capsule-container .card2 .card-img",
         { scale: 1.3 },
         { scale: 1 },
-        "card2OnEnter"
+        "card2OnEnter",
       )
       .addLabel("card2ContentReveal")
       .to(
@@ -253,7 +253,7 @@ export default function Home() {
             card2RevealTl.reverse();
           },
         },
-        "card2ContentReveal"
+        "card2ContentReveal",
       )
       .addLabel("card2OnLeave")
       .to(".capsule-container .card2", { scale: 0.9 }, "card2OnLeave")
@@ -261,20 +261,20 @@ export default function Home() {
         ".capsule-container .card2 .overlay",
         { autoAlpha: 0 },
         { autoAlpha: 1 },
-        "card2OnLeave"
+        "card2OnLeave",
       )
       .addLabel("card3OnEnter", "<")
       .fromTo(
         ".capsule-container .card3",
         { y: "100dvh" },
         { y: "0dvh" },
-        "card3OnEnter"
+        "card3OnEnter",
       )
       .fromTo(
         ".capsule-container .card3 .card-img",
         { scale: 1.3 },
         { scale: 1 },
-        "card3OnEnter"
+        "card3OnEnter",
       )
       .addLabel("card3ContentReveal")
       .to(
@@ -288,7 +288,7 @@ export default function Home() {
             card3RevealTl.reverse();
           },
         },
-        "card3ContentReveal"
+        "card3ContentReveal",
       );
 
     // carousel sections
@@ -324,7 +324,7 @@ export default function Home() {
             secondCarouselTl.reverse();
           },
         },
-        "secondCarouselTl"
+        "secondCarouselTl",
       )
       .addLabel("thirdCarouselTl")
       .to(
@@ -337,7 +337,7 @@ export default function Home() {
             thirdCarouselTl.reverse();
           },
         },
-        "thirdCarouselTl"
+        "thirdCarouselTl",
       );
 
     const secondCarouselTl = gsap
@@ -347,7 +347,7 @@ export default function Home() {
         ".capsule-carousel .item-1",
         { scale: 1, autoAlpha: 1 },
         { scale: 0.8, autoAlpha: 0 },
-        "carousel1OnLeave"
+        "carousel1OnLeave",
       )
       .fromTo(
         ".capsule-carousel .item-2",
@@ -360,20 +360,20 @@ export default function Home() {
             });
           },
         },
-        "carousel1OnLeave"
+        "carousel1OnLeave",
       )
       .addLabel("carousel2OnEnter", "<")
       .fromTo(
         ".capsule-carousel .item-2 .bg-1",
         { clipPath: "inset(0% 0 0% 0)" },
         { clipPath: "inset(100% 0 0% 0)" },
-        "carousel2OnEnter"
+        "carousel2OnEnter",
       )
       .fromTo(
         ".capsule-carousel .item-3",
         { y: "0%", x: "100%" },
         { y: "-100%", x: "100%" },
-        "carousel2OnEnter"
+        "carousel2OnEnter",
       );
 
     const thirdCarouselTl = gsap
@@ -391,32 +391,32 @@ export default function Home() {
             });
           },
         },
-        "carousel2OnLeave"
+        "carousel2OnLeave",
       )
       .addLabel("carousel3OnEnter", "<")
       .fromTo(
         ".capsule-carousel .item-3",
         { x: "100%" },
         { x: "0%" },
-        "carousel3OnEnter"
+        "carousel3OnEnter",
       )
       .fromTo(
         ".capsule-carousel .item-3 .txt-1",
         { clipPath: "inset(0% 0 0% 0)" },
         { clipPath: "inset(100% 0 0% 0)", duration: 0.5 },
-        "carousel3OnEnter"
+        "carousel3OnEnter",
       )
       .fromTo(
         ".capsule-carousel .item-3 .txt-2",
         { y: "100%", clipPath: "inset(100% 0 0% 0)" },
         { y: "0%", clipPath: "inset(0% 0 0% 0)", duration: 0.5 },
-        "carousel3OnEnter"
+        "carousel3OnEnter",
       )
       .fromTo(
         ".capsule-carousel .item-4",
         { y: "0%" },
         { y: "-100%" },
-        "carousel3OnEnter"
+        "carousel3OnEnter",
       );
 
     // discover section text animation
@@ -463,11 +463,11 @@ export default function Home() {
 
     // Horizontal scroll animation on Activity section
     const activityContainer = document.querySelector(
-      ".activity-container"
+      ".activity-container",
     ) as HTMLElement;
     if (!activityContainer) return;
     const childActivityElements = Array.from(
-      activityContainer.children
+      activityContainer.children,
     ) as HTMLElement[];
 
     const activityTl = gsap
@@ -486,7 +486,7 @@ export default function Home() {
           x: () =>
             -(activityContainer.scrollWidth - activityContainer.offsetWidth),
         },
-        "start"
+        "start",
       );
 
     childActivityElements.forEach((element) => {
@@ -521,7 +521,7 @@ export default function Home() {
         secondReview,
         { y: "-120%" },
         { y: "0%", duration: 0.35 },
-        "Enter2Review"
+        "Enter2Review",
       )
       .addLabel("review2") // Second review position
       .addLabel("Exit2Review")
@@ -531,7 +531,7 @@ export default function Home() {
         thirdReview,
         { y: "-120%" },
         { y: "0%", duration: 0.35 },
-        "Enter3Review"
+        "Enter3Review",
       )
       .addLabel("review3"); // Third review position
 
@@ -566,16 +566,16 @@ export default function Home() {
         islandSection,
         { borderRadius: "100px" },
         { borderRadius: "50px" },
-        "start"
+        "start",
       )
       .fromTo(".island-img", { scale: 1.3 }, { scale: 1 }, "start");
   });
 
   return (
-    <div className="font-sans from-[#181717] to-[#22201f] bg-gradient-to-b">
+    <div className="font-sans">
       <section className="p-2 mb-20">
         <div className="min-h-[calc(100vh-16px)] rounded-[50px] relative overflow-hidden">
-          <div className="hero h-full w-full bg-[url('/img/cap1.png')] scale-[1] bg-no-repeat bg-center bg-cover absolute top-0 left-0 saturate-[120%]" />
+          <div className="hero h-full w-full bg-[url('/img/cap1.png')] scale-[1] bg-no-repeat bg-center bg-cover absolute top-0 left-0 contrast-110" />
           <video
             width="320"
             height="240"
@@ -596,10 +596,10 @@ export default function Home() {
                 alt="Capsules Logo"
                 width={500}
                 height={500}
-                className="h-48 w-fit"
+                className="h-20 md:h-35 lg:h-48 mt-20 md:mt-0 w-fit"
               />
-              <div className="flex gap-4 justify-between items-end ">
-                <p className="font-medium text-[38px] tracking-wide leading-10 ">
+              <div className="flex flex-col md:flex-row gap-y-2 gap-x-4 justify-between md:items-end">
+                <p className="text-[clamp(15px,15vw,38px)] tracking-wide leading-none md:leading-10">
                   Closer to <br /> Nature—Closer <br /> to Yourself
                 </p>
                 <div>
@@ -613,61 +613,76 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="px-10 mb-50">
-        <div className="text-[80px] tracking-tighter py-36">
+      <section className="px-5 md:px-10 mb-20 md:mb-50">
+        <div className="text-[clamp(20px,10vw,80px)] tracking-tighter md:py-36">
           <TextRevealAnimation>
-            <p>Welcome to a world of wild California</p>
-            <p>desert with Capsules®, where you will</p>
-            <p>discover exquisite nature observing it</p>
-            <p>from capsule houses, nestled in the</p>
-            <p>one of the most breathtaking</p>
-            <p>destination on the United States.</p>
+            <p>
+              Welcome to a world of wild California{" "}
+              <br className="hidden md:block" />
+              desert with Capsules®, where you will{" "}
+              <br className="hidden md:block" />
+              discover exquisite nature observing it{" "}
+              <br className="hidden md:block" />
+              from capsule houses, nestled in the{" "}
+              <br className="hidden md:block" />
+              one of the most breathtaking <br className="hidden md:block" />
+              destination on the United States.
+            </p>
           </TextRevealAnimation>
         </div>
-        <div className="flex items-center justify-between *:w-full *:flex-grow">
-          <div className="inline-flex">
+        <div className="flex flex-col xl:flex-row gap-y-10 items-center justify-between mt-20 md:mt-0 *:w-full *:flex-grow">
+          <div className="inline-flex flex-wrap justify-center">
             <Image
               src={"/img/welcome-1.png"}
               alt="rocks"
               width={500}
               height={500}
-              className="h-48 w-fit rounded-full"
+              className="h-1/2 lg:h-48 w-fit rounded-full"
             />
             <Image
               src={"/img/welcome-2.png"}
               alt="people"
               width={500}
               height={500}
-              className="h-48 w-fit rounded-full"
+              className="h-1/2 lg:h-48 w-fit rounded-full"
             />
           </div>
-          <div className="text-[38px] tracking-wide leading-10 text-light-brown">
-            <div className="w-fit">
-              <p>A place where you can be with </p>
-              <p>yourself and your loved ones. </p>
-              <p>A place where you can experience </p>
-              <p>unforgettable desert things.</p>
+          <div className="text-[clamp(20px,7vw,38px)] tracking-wide leading-none md:leading-10 text-light-brown">
+            <div>
+              <p>
+                A place where you can be with
+                <br className="hidden md:block" /> yourself and your loved ones.
+              </p>
+              <p>
+                A place where you can experience{" "}
+                <br className="hidden md:block" />
+                unforgettable desert things.
+              </p>
             </div>
           </div>
         </div>
       </section>
-      <section className="px-7 mb-20">
+      <section className="px-5 md:px-7 mb-20">
         <div className="choose-container">
           <p className="choose-sub text-sm pb-8">
             Discover available Capsules®
           </p>
-          <div className="text-[184px] text-nowrap leading-tight">
+          <div className="text-[clamp(20px,12vw,184px)] leading-none">
             <div className="choose-text">Choose the one</div>
-            <div className="choose-text -mt-10">you like best</div>
+            <div className="choose-text">you like best</div>
           </div>
         </div>
-        <div className="mt-8 pb-10 flex *:w-full *:flex-grow ">
-          <div className="text-[38px] tracking-wide leading-10 text-light-brown">
-            <p>You can choose one of three</p>
-            <p>premium capsule houses in our </p>
-            <p>offer. Each of our capsules provides </p>
-            <p>the highest quality and meets the</p>
-            <p>standards adjusted to your needs. </p>
+        <div className="mt-10 pb-10 flex flex-col md:flex-row gap-y-10 *:w-full *:flex-grow ">
+          <div className="text-[clamp(20px,7vw,38px)] tracking-wide leading-none md:leading-10 text-light-brown">
+            <p>
+              You can choose one of three <br className="hidden md:block" />{" "}
+              premium capsule houses in our <br className="hidden md:block" />{" "}
+              offer. Each of our capsules provides
+              <br className="hidden md:block" />
+              the highest quality and meets the
+              <br className="hidden md:block" />
+              standards adjusted to your needs.
+            </p>
             <p>Choose the one you like.</p>
           </div>
           <div>
@@ -675,7 +690,7 @@ export default function Home() {
               All Capsules® houses—has built <br />
               based on the same rules:
             </p>
-            <ul className="py-10 *:border-2 *:rounded-full *:w-fit *:px-6 *:py-3 flex flex-wrap gap-2 text-[38px] tracking-wide leading-10 *:odd:text-light-brown">
+            <ul className="py-10 *:border-2 *:rounded-full *:w-fit *:px-4 md:*:px-6 *:py-2 md:*:py-3 flex flex-wrap gap-2 text-[clamp(15px,6vw,38px)]  tracking-wide leading-10 *:odd:text-light-brown">
               <li>Sustainable</li>
               <li>Nature-Care</li>
               <li>Smart</li>
@@ -758,10 +773,12 @@ export default function Home() {
               cost={2250}
             />
           </div>
-          <div className="scroll-indicator absolute top-1/2 bottom-1/2 -translate-y-1/2 right-5 z-10">
-            <p className="text-[40px] text-white/50">(Scroll)</p>
+          <div className="scroll-indicator absolute top-10 md:top-1/2 md:bottom-1/2 -translate-y-1/2 right-5 z-10">
+            <p className="text-[clamp(15px,7vw,40px)] text-white/50">
+              (Scroll)
+            </p>
           </div>
-          <div className="scroll-indicator absolute bottom-15 right-5 w-80 h-[2px] rounded-md bg-white/30 z-10 inline-flex overflow-hidden">
+          <div className="scroll-indicator absolute bottom-5 md:bottom-15 right-5 w-80 h-[2px] rounded-md bg-white/30 z-10 inline-flex overflow-hidden">
             <div className="capsule-progress w-0 h-full bg-white" />
           </div>
         </div>
@@ -770,7 +787,7 @@ export default function Home() {
         <div className="mb-10 text-[15px] text-light-brown tracking-[-0.2] leading-[23px] font-semibold">
           Closer than you think
         </div>
-        <div className="text-[90px] tracking-[-4px] leading-[96px]">
+        <div className="px-2 text-[clamp(20px,12vw,90px)] md:tracking-[-4px] leading-none md:leading-[96px]">
           Our Capsules® are located <br />
           near Los Angeles with easy <br />
           <span className="underline text-light-brown underline-offset-[10px] decoration-from-font decoration-solid cursor-pointer">
@@ -785,31 +802,31 @@ export default function Home() {
         </div>
         <div className="py-10">
           <Marquee autoFill={true} speed={150}>
-            <div className="text-[200px] leading-none overflow-hidden">
+            <div className="text-[100px] md:text-[170px] leading-none overflow-hidden">
               Why Capsule®?*
             </div>
           </Marquee>
         </div>
-        <div className="capsule-carousel p-2 h-dvh">
+        <div className="hidden md:block capsule-carousel p-2 h-dvh">
           <div className="overflow-hidden flex *:flex-grow flex-wrap w-full h-full *:h-full *:w-[calc(50vw-20px)] *:overflow-hidden *:rounded-[50px] *:relative">
             <div className="item-1 bg-bokara-grey">
-              <div className="flex flex-col justify-between h-full w-full py-10 px-6">
-                <div className="text-light-brown text-[38px] tracking-wide leading-10 font-semibold w-fit">
+              <div className="flex flex-col justify-between h-full w-full py-10 px-2 md:px-6">
+                <div className="text-light-brown text-[clamp(14px,7vw,38px)] tracking-wide leading-none md:leading-10 font-semibold w-fit">
                   <p>Enjoy the view</p>
                   <p>through —the wide</p>
                   <p>panoramic glass</p>
                   <p>window</p>
                 </div>
-                <div className="flex items-center gap-5 justify-between w-full">
+                <div className="flex flex-col-reverse md:flex-row md:items-center gap-5 justify-between w-full">
                   <div className="flex gap-x-[4px]">
-                    <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                    <div className="rounded-full border-2 w-8 md:w-10 aspect-square inline-flex justify-center items-center text-sm font-semibold">
                       <span>01</span>
                     </div>
-                    <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                    <div className="rounded-full border-2 border-white/50 text-white/50 w-8 md:w-10 aspect-square inline-flex justify-center items-center text-sm font-semibold">
                       <span>03</span>
                     </div>
                   </div>
-                  <div>
+                  <div className="text-sm md:text-base px-1 md:px-0">
                     <p>Get closer to the desert nature than ever before</p>
                     <p>and admire this unique, breathtaking landscape.</p>
                   </div>
@@ -821,8 +838,8 @@ export default function Home() {
               <div className="bg-2 bg-[url('/img/cap2.png')] bg-center bg-cover z-0" />
             </div>
             <div className="item-3 bg-bokara-grey">
-              <div className="flex flex-col justify-between h-full w-full py-10 px-6">
-                <div className="text-light-brown text-[38px] tracking-wide leading-10 font-semibold">
+              <div className="flex flex-col justify-between h-full w-full py-10 px-2 md:px-6">
+                <div className="text-light-brown text-[clamp(20px,7vw,38px)] tracking-wide leading-none md:leading-10 font-semibold">
                   <div className="relative overflow-hidden h-10 *:absolute *:top-0 *:left-0 *:w-fit">
                     <p className="txt-1">Sound of silence</p>
                     <p className="txt-2">Relax yourself</p>
@@ -839,19 +856,19 @@ export default function Home() {
                     <p className="txt-1">privacy</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-5 justify-between w-full">
+                <div className="flex flex-col-reverse md:flex-row md:items-center gap-5 justify-between w-full *:w-full">
                   <div className="flex gap-x-[4px]">
-                    <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold overflow-hidden">
+                    <div className="rounded-full border-2 w-8 md:w-10 aspect-square inline-flex justify-center items-center text-sm font-semibold overflow-hidden">
                       <div className="relative h-5 w-5 *:absolute *:top-0 *:left-0 *:w-full">
                         <span className=" txt-1">02</span>
                         <span className="txt-2">03</span>
                       </div>
                     </div>
-                    <div className="rounded-full border-2 border-white/50 text-white/50 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
+                    <div className="rounded-full border-2 border-white/50 text-white/50 w-8 md:w-10 aspect-square inline-flex justify-center items-center text-sm font-semibold">
                       <span>03</span>
                     </div>
                   </div>
-                  <div className="w-100">
+                  <div>
                     <div className="relative overflow-hidden h-6 *:absolute *:top-0 *:left-0 *:w-fit">
                       <p className="txt-1">
                         Here, every whisper of nature recharges
@@ -875,16 +892,101 @@ export default function Home() {
             <div className="item-4 bg-[url('/img/cap1.png')] bg-right bg-cover" />
           </div>
         </div>
+        {/* Mobile */}
+        <div className="block md:hidden p-2">
+          <div className=" space-y-6 *:w-full *:overflow-hidden *:rounded-[50px]">
+            <div className="item-1 bg-bokara-grey">
+              <div className="flex flex-col gap-2 justify-between h-full w-full p-5 pt-10">
+                <div className="text-light-brown text-lg tracking-wide leading-none font-semibold w-fit">
+                  <p>Enjoy the view</p>
+                  <p>through —the wide</p>
+                  <p>panoramic glass</p>
+                  <p>window</p>
+                </div>
+                <div className="flex items-center gap-5 justify-between w-full">
+                  <div className="flex gap-x-[4px]">
+                    <div className="rounded-full border-2 w-8 aspect-square inline-flex justify-center items-center text-xs font-semibold">
+                      <span>01</span>
+                    </div>
+                    <div className="rounded-full border-2 border-white/50 text-white/50 w-8 aspect-square inline-flex justify-center items-center text-xs font-semibold">
+                      <span>03</span>
+                    </div>
+                  </div>
+                  <div className="text-sm">
+                    <p>
+                      Get closer to the desert nature than ever before and
+                      admire this unique, breathtaking landscape.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-[url('/img/cap3.png')] bg-center bg-cover h-50 w-full rounded-t-[50px]" />
+            </div>
+            <div className="item-2 bg-bokara-grey">
+              <div className="flex flex-col gap-2 justify-between h-full w-full p-5 pt-10">
+                <div className="text-light-brown text-lg tracking-wide leading-none font-semibold w-fit">
+                  <p>Sound of silence</p>
+                  <p>—out of the city</p>
+                  <p>rush with completely</p>
+                  <p>privacy</p>
+                </div>
+                <div className="flex items-center gap-5 justify-between w-full">
+                  <div className="flex gap-x-[4px]">
+                    <div className="rounded-full border-2 w-8 aspect-square inline-flex justify-center items-center text-xs font-semibold">
+                      <span>02</span>
+                    </div>
+                    <div className="rounded-full border-2 border-white/50 text-white/50 w-8 aspect-square inline-flex justify-center items-center text-xs font-semibold">
+                      <span>03</span>
+                    </div>
+                  </div>
+                  <div className="text-sm">
+                    <p>
+                      Here, every whisper of nature recharges Let the natural
+                      textures and gentle bubbles
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-[url('/img/cap2.png')] bg-center bg-cover h-50 w-full rounded-t-[50px]" />
+            </div>
+            <div className="item-3 bg-bokara-grey">
+              <div className="flex flex-col gap-2 justify-between h-full w-full p-5 pt-10">
+                <div className="text-light-brown text-lg tracking-wide leading-none font-semibold w-fit">
+                  <p>Relax yourself</p>
+                  <p>in—Wooden</p>
+                  <p>Jacuzzi</p>
+                </div>
+                <div className="flex items-center gap-5 justify-between w-full">
+                  <div className="flex gap-x-[4px]">
+                    <div className="rounded-full border-2 w-8 aspect-square inline-flex justify-center items-center text-xs font-semibold">
+                      <span>03</span>
+                    </div>
+                    <div className="rounded-full border-2 border-white/50 text-white/50 w-8 aspect-square inline-flex justify-center items-center text-xs font-semibold">
+                      <span>03</span>
+                    </div>
+                  </div>
+                  <div className="text-sm">
+                    <p>
+                      your soul—your sanctuary of solitude awaits. transport you
+                      to a realm of pure, handcrafted.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-[url('/img/cap1.png')] bg-center bg-cover h-50 w-full rounded-t-[50px]" />
+            </div>
+          </div>
+        </div>
       </section>
       <section className="mt-40 px-5">
         <div className="discover-container">
           <p className="discover-sub text-sm pb-8">Ready for an adventure?</p>
-          <div className="text-[184px] text-nowrap leading-tight">
+          <div className="text-[clamp(20px,12vw,184px)] leading-none">
             <div className="discover-text">Discover the</div>
-            <div className="discover-text -mt-15">desert activities</div>
+            <div className="discover-text">desert activities</div>
           </div>
         </div>
-        <div className="flex gap-35 w-full *:w-full *:flex-1 mt-10">
+        <div className="flex flex-col lg:flex-row gap-y-10 gap-x-35 w-full *:w-full *:flex-1 mt-10">
           <div className="space-y-6">
             <p className="font-semibold tracking-wider text-sm leading-none">
               Offered Capsules® activity have different levels of difficulty:
@@ -892,7 +994,7 @@ export default function Home() {
             <ul className="discover-levels space-y-4">
               <li className="space-y-4">
                 <div className="flex gap-x-2 justify-between items-start text-light-brown">
-                  <p className="text-[27px] font-medium">Easy</p>
+                  <p className="text-[20px] md:text-[27px] font-medium">Easy</p>
                   <p>3-5h duration</p>
                 </div>
                 <div className="bg-pale-white/40 relative overflow-hidden h-[2px] w-full">
@@ -901,7 +1003,9 @@ export default function Home() {
               </li>
               <li className="space-y-4">
                 <div className="flex gap-x-2 justify-between items-start text-light-brown">
-                  <p className="text-[27px] font-medium">Medium</p>
+                  <p className="text-[20px] md:text-[27px] font-medium">
+                    Medium
+                  </p>
                   <p>8-12h duration</p>
                 </div>
                 <div className="bg-pale-white/40 relative overflow-hidden h-[2px] w-full">
@@ -910,7 +1014,7 @@ export default function Home() {
               </li>
               <li className="space-y-4">
                 <div className="flex gap-x-2 justify-between items-start text-light-brown">
-                  <p className="text-[27px] font-medium">Hard</p>
+                  <p className="text-[20px] md:text-[27px] font-medium">Hard</p>
                   <p>24h duration</p>
                 </div>
                 <div className="bg-pale-white/40 relative overflow-hidden h-[2px] w-full">
@@ -919,18 +1023,23 @@ export default function Home() {
               </li>
             </ul>
           </div>
-          <div className="text-[38px] font-medium tracking-tight leading-10 text-light-brown text-nowrap">
-            We want to make sure your stay is <br />
-            exciting and enjoyable. That’s why we <br />
-            offer a variety of activities with different <br />
-            levels of engagement. Whether you seek <br />
-            thrills or tranquility, there’s something for <br />
-            everyone to make your desert stay truly <br />
+          <div className="text-[clamp(15px,7vw,38px)] font-normal md:font-medium tracking-tight leading-none md:leading-10 text-light-brown md:text-nowrap">
+            We want to make sure your stay is <br className="hidden md:block" />
+            exciting and enjoyable. That’s why we{" "}
+            <br className="hidden md:block" />
+            offer a variety of activities with different{" "}
+            <br className="hidden md:block" />
+            levels of engagement. Whether you seek{" "}
+            <br className="hidden md:block" />
+            thrills or tranquility, there’s something for{" "}
+            <br className="hidden md:block" />
+            everyone to make your desert stay truly{" "}
+            <br className="hidden md:block" />
             memorable.
           </div>
         </div>
       </section>
-      <section className="mt-50 pb-50">
+      <section className="mt-50 pb-20 md:pb-50">
         <div className="activity-container h-dvh w-full overflow-hidden flex gap-2 p-2">
           <div
             className="activity-1 h-full w-screen flex-shrink-0"
@@ -946,22 +1055,22 @@ export default function Home() {
                   className="object-cover object-center scale-[1.2] w-full h-full"
                 />
               </div>
-              <div className="absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
-                <div className="flex justify-between items-start">
+              <div className="absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-4 md:px-6 py-6 md:py-10 text-white">
+                <div className="flex flex-col-reverse md:flex-row justify-between md:items-start">
                   <h3 className="text-4xl font-semibold">
                     Buggy tours <br /> in the desert
                   </h3>
-                  <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
+                  <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm ml-auto">
                     Easy
                   </div>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col md:flex-row gap-y-1 justify-between md:items-center">
                   <p className="text-sm font-semibold">
-                    Explore the terrain on a guided buggy tour that takes
-                    <br />
+                    Explore the terrain on a guided buggy tour that takes{" "}
+                    <br className="hidden md:block" />
                     you through the deserts vast&apos;s and open landscapes.
                   </p>
-                  <div className="flex gap-x-[4px]">
+                  <div className="ml-auto flex gap-x-[4px]">
                     <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
                       <span>01</span>
                     </div>
@@ -984,25 +1093,25 @@ export default function Home() {
                   alt="Activities sandy hikes"
                   width={500}
                   height={500}
-                  className="object-fit object-top scale-[1.2] w-full h-full"
+                  className="object-cover object-center scale-[1.2] w-full h-full"
                 />
               </div>
-              <div className=" absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
-                <div className="flex justify-between items-start">
+              <div className="absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-4 md:px-6 py-6 md:py-10 text-white">
+                <div className="flex flex-col-reverse md:flex-row justify-between md:items-start">
                   <h3 className="text-4xl font-semibold">
                     Breathtaking <br /> desert hikes
                   </h3>
-                  <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
+                  <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm ml-auto">
                     Medium
                   </div>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col md:flex-row gap-y-1 justify-between md:items-center">
                   <p className="text-sm font-semibold">
                     Set out on a hike that offers clear trails, stunning views,{" "}
-                    <br />
+                    <br className="hidden md:block" />
                     and a closer look at the unique desert environment.
                   </p>
-                  <div className="flex gap-x-[4px]">
+                  <div className="ml-auto flex gap-x-[4px]">
                     <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
                       <span>02</span>
                     </div>
@@ -1025,25 +1134,25 @@ export default function Home() {
                   alt="Activities rock climbing"
                   width={500}
                   height={500}
-                  className="object-cover object-center scale-[1.2] w-full h-full"
+                  className="object-cover object-top-right md:object-center scale-[1.2] w-full h-full"
                 />
               </div>
-              <div className=" absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-6 py-10  text-white">
-                <div className="flex justify-between items-start">
+              <div className="absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-4 md:px-6 py-6 md:py-10 text-white">
+                <div className="flex flex-col-reverse md:flex-row justify-between md:items-start">
                   <h3 className="text-4xl font-semibold">
                     Exciting group <br /> rock climbing
                   </h3>
-                  <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm">
+                  <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm ml-auto">
                     Hard
                   </div>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col md:flex-row gap-y-1 justify-between md:items-center">
                   <p className="text-sm font-semibold">
                     Climbing session on natural sandstone formations, designed
-                    <br />
+                    <br className="hidden md:block" />
                     to be both challenging and safe while fostering teamwork.
                   </p>
-                  <div className="flex gap-x-[4px]">
+                  <div className="ml-auto flex gap-x-[4px]">
                     <div className="rounded-full border-2 w-10 h-10 inline-flex justify-center items-center text-sm font-semibold">
                       <span>03</span>
                     </div>
@@ -1059,26 +1168,26 @@ export default function Home() {
       </section>
 
       {/* Reviews */}
-      <section className="reviews py-5 px-10 ">
+      <section className="reviews p-5 md:px-10">
         <p className="text-xs pb-8 font-semibold">Do people like us?</p>
-        <div className="relative min-h-[520px]">
+        <div className="relative min-h-[300px] md:min-h-[520px]">
           <div>
             <div className="space-y-5">
-              <div className="text-[80px] tracking-tighter leading-[1]">
+              <div className="text-[38px] md:text-[80px] text-wrap tracking-tighter leading-[1]">
                 {/* line 1 */}
-                <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
+                <div className="h-10 md:h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
                   <div className="review-1">Staying at Capsule® in the</div>
                   <div className="review-2">Capsule® offered the perfect</div>
                   <div className="review-3">Capsule® was the perfect</div>
                 </div>
                 {/* line 2 */}
-                <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
+                <div className="h-10 md:h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
                   <div className="review-1">California desert redefined my</div>
                   <div className="review-2">escape — sleek, modern spaces</div>
                   <div className="review-3">desert hideaway — stylish,</div>
                 </div>
                 {/* line 3 */}
-                <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
+                <div className="h-10 md:h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
                   <div className="review-1">retreat — modern design meets</div>
                   <div className="review-2">
                     surrounded by desert stillness.
@@ -1086,13 +1195,13 @@ export default function Home() {
                   <div className="review-3">peaceful, and fully surrounded</div>
                 </div>
                 {/* line 4 */}
-                <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
+                <div className="h-10 md:h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
                   <div className="review-1">nature, and every sunset feels</div>
                   <div className="review-2">Each moment felt peaceful,</div>
                   <div className="review-3">by stunning views day and</div>
                 </div>
                 {/* line 5 */}
-                <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
+                <div className="h-10 md:h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
                   <div className="review-1">like a serene masterpiece.</div>
                   <div className="review-2">grounded, and truly unique.</div>
                   <div className="review-3">night.</div>
@@ -1101,21 +1210,21 @@ export default function Home() {
               <div className="h-24 overflow-hidden relative *:absolute *:top-0 *:left-0">
                 {/* review 1 profile */}
                 <div className="review-1 flex gap-5 items-center">
-                  <div className="w-15 bg-pink-700 aspect-square rounded-full" />
+                  <div className="w-10 md:w-15 bg-pink-700 aspect-square rounded-full" />
                   <div>
                     Queen Umesi <br /> (Lagos, Nigeria)
                   </div>
                 </div>
                 {/* review 2 profile */}
                 <div className="review-2 flex gap-5 items-center">
-                  <div className="w-15 bg-red-500 aspect-square rounded-full" />
+                  <div className="w-10 md:w-15 bg-red-500 aspect-square rounded-full" />
                   <div>
                     Marcus Simpson <br /> (New York)
                   </div>
                 </div>
                 {/* review 3 profile */}
                 <div className="review-3 flex gap-5 items-center">
-                  <div className="w-15 aspect-square bg-amber-500 rounded-full" />
+                  <div className="w-10 md:w-15 aspect-square bg-amber-500 rounded-full" />
                   <div>
                     Jason Whitaker <br /> (San Francisco)
                   </div>
@@ -1162,7 +1271,7 @@ export default function Home() {
             Your browser does not support the video tag.
           </video>
           <div className="h-full w-full absolute top-0 left-0">
-            <div className="h-full w-full flex flex-col justify-end gap-30 px-6 py-7">
+            <div className="h-full w-full flex flex-col justify-center md:justify-end gap-30 px-6 py-7">
               {/* change this to h1 with splitText */}
               <Image
                 src={"/img/capsule.svg"}
@@ -1171,8 +1280,8 @@ export default function Home() {
                 height={500}
                 className="h-48 w-fit self-center"
               />
-              <div className="flex gap-4 justify-between items-end ">
-                <p className="font-medium text-[38px] tracking-wide leading-10 ">
+              <div className="hidden md:flex flex-row gap-x-4 justify-between items-end">
+                <p className="font-medium tracking-wide leading-10">
                   Closer to <br /> Nature—Closer <br /> to Yourself
                 </p>
                 <div>
@@ -1187,28 +1296,29 @@ export default function Home() {
         </div>
       </section>
       <section className="mt-40">
-        <div className="px-10 text-[15px] tracking-tight font-semibold">
+        <div className="px-5 md:px-10 text-[15px] tracking-tight font-semibold">
           Interested in an amazing adventure?
           <br />
           Reserve one of our Capsules®
         </div>
         <div>
           <Marquee autoFill={true} speed={150} pauseOnHover={true}>
-            <div className="text-[170px] tracking-tight">
+            <div className="text-[100px] md:text-[170px] tracking-tight">
               Book your Capsule®—
             </div>
           </Marquee>
         </div>
-        <div className="py-20 px-10 flex gap-10 justify-between items-end">
-          <div className="text-3xl space-y-6 text-light-brown">
+        <div className="py-10 md:py-20 px-5 md:px-10 flex flex-col md:flex-row gap-10 justify-between md:items-end">
+          <div className="text-2xl md:text-3xl space-y-3 md:space-y-6 text-light-brown">
             <p>
-              This website is just the concept <br />
-              work done by— Moyra and cloned <br />
+              This website is just the concept{" "}
+              <br className="hidden md:block" />
+              work done by— Moyra and cloned <br className="hidden md:block" />
               by— Queen to show her capabilities.
             </p>
             <p>If you like this project, give me the job {">_<"}.</p>
           </div>
-          <ul className="text-3xl h-full flex flex-col items-end">
+          <ul className="text-3xl h-full flex flex-col md:items-end">
             {menuItems.map((item, idx) => {
               return (
                 <li
@@ -1226,7 +1336,7 @@ export default function Home() {
             })}
           </ul>
         </div>
-        <div className="px-10 flex gap-10 justify-between items-center">
+        <div className="px-5 md:px-10 flex flex-col md:flex-row gap-y-5 gap-x-10 justify-between items-center">
           <ul className="*:w-12 *:h-12 *:border *:border-light-brown *:rounded-full *:inline-flex *:items-center *:justify-center flex [&_svg]:w-5 [&_svg]:h-5 *:text-pale-white">
             <li>
               <svg
@@ -1273,7 +1383,7 @@ export default function Home() {
               </svg>
             </li>
           </ul>
-          <div className="font-semibold text-sm">
+          <div className="font-semibold text-sm hidden md:block">
             Meet Capsules®—modern and cozy <br />
             houses, in the California desert.
           </div>
@@ -1281,7 +1391,7 @@ export default function Home() {
       </section>
       <hr className="my-10" />
       <section className="space-y-5">
-        <div className="px-10 flex gap-5 justify-between text-light-brown [&_span]:font-medium [&_span]:text-pale-white">
+        <div className="px-5 md:px-10 flex flex-col md:flex-row gap-y-2 gap-x-5 justify-between text-light-brown [&_span]:font-medium [&_span]:text-pale-white">
           <div>
             Website cloned by—
             <Link
@@ -1291,7 +1401,7 @@ export default function Home() {
               Queen
             </Link>
           </div>
-          <div>
+          <div className="hidden md:block">
             This website is not using<span> cookies</span>
           </div>
           <div>
@@ -1299,7 +1409,7 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <div className="footer-capsule text-[350px] text-center font-semibold bg-gradient-to-b from-[#9f9380] to-[#f4efe7] bg-clip-text text-transparent">
+          <div className="footer-capsule text-[90px] md:text-[200px] lg:text-[350px] text-center font-semibold bg-gradient-to-b from-[#9f9380] to-[#f4efe7] bg-clip-text text-transparent">
             Capsule®
           </div>
         </div>
