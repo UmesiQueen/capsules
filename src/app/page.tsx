@@ -8,18 +8,19 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 import Capsule from "@/components/CapsuleCard";
 import TextRevealAnimation from "@/components/TextRevealAnimation";
 import { Button } from "@/components/ui/button";
 
-const menuItems: string[] = [
-  "Welcome",
-  "Introduction",
-  "Houses",
-  "Why Capsules®",
-  "Activities",
-  "Feedback",
+const menuItems = [
+  { title: "Welcome", slug: "welcome" },
+  { title: "Introduction", slug: "introduction" },
+  { title: "Houses", slug: "houses" },
+  { title: "Why Capsules®", slug: "why" },
+  { title: "Activities", slug: "activities" },
+  { title: "Feedback", slug: "feedback" },
 ];
 
 declare global {
@@ -57,6 +58,36 @@ export default function Home() {
       lenis.destroy();
       gsap.ticker.remove(lenis.raf);
       delete window.lenis;
+    };
+  }, []);
+
+  React.useEffect(() => {
+    gsap.registerPlugin(ScrollToPlugin);
+
+    const handleNavClick = (e: Event) => {
+      e.preventDefault();
+      const targetId = (e.currentTarget as HTMLAnchorElement).getAttribute(
+        "href",
+      );
+
+      if (targetId) {
+        gsap.to(window, {
+          duration: 3,
+          scrollTo: targetId,
+          ease: "power2.inOut",
+        });
+      }
+    };
+
+    const navLinks = document.querySelectorAll(".nav-link");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", handleNavClick);
+    });
+
+    return () => {
+      navLinks.forEach((link) => {
+        link.removeEventListener("click", handleNavClick);
+      });
     };
   }, []);
 
@@ -573,7 +604,7 @@ export default function Home() {
 
   return (
     <div className="font-sans">
-      <section className="p-2 mb-20">
+      <section id="welcome" className="p-2 mb-20">
         <div className="min-h-[calc(100vh-16px)] rounded-[50px] relative overflow-hidden">
           <div className="hero h-full w-full bg-[url('/img/cap1.png')] scale-[1] bg-no-repeat bg-center bg-cover absolute top-0 left-0 contrast-110" />
           <video
@@ -613,7 +644,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="px-5 md:px-10 mb-20 md:mb-50">
+      <section id="introduction" className="px-5 md:px-10 mb-20 md:mb-50">
         <div className="text-[clamp(20px,10vw,80px)] tracking-tighter md:py-36">
           <TextRevealAnimation>
             <p>
@@ -701,7 +732,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="p-2">
+      <section id="houses" className="p-2">
         <div className="capsule-container relative h-dvh">
           <div className="card1 absolute left-0 top-0 h-full w-full z-0">
             <div className="h-dvh w-full relative overflow-hidden flex items-center justify-center">
@@ -795,7 +826,7 @@ export default function Home() {
           </span>
         </div>
       </section>
-      <section>
+      <section id="why">
         <div className="ml-5 text-[15px] text-white tracking-[-0.2] leading-[23px] font-semibold">
           Want to learn more about <br />
           the benefits of—Capsules®?
@@ -1039,7 +1070,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="mt-50 pb-20 md:pb-50">
+      <section id="activities" className="mt-50 pb-20 md:pb-50">
         <div className="activity-container h-dvh w-full overflow-hidden flex gap-2 p-2">
           <div
             className="activity-1 h-full w-screen flex-shrink-0"
@@ -1168,7 +1199,7 @@ export default function Home() {
       </section>
 
       {/* Reviews */}
-      <section className="reviews p-5 md:px-10">
+      <section id="feedback" className="reviews p-5 md:px-10">
         <p className="text-xs pb-8 font-semibold">Do people like us?</p>
         <div className="relative min-h-[300px] md:min-h-[520px]">
           <div>
@@ -1281,7 +1312,7 @@ export default function Home() {
                 className="h-48 w-fit self-center"
               />
               <div className="hidden md:flex flex-row gap-x-4 justify-between items-end">
-                <p className="font-medium tracking-wide leading-10">
+                <p className="text-[clamp(15px,15vw,38px)] tracking-wide leading-10">
                   Closer to <br /> Nature—Closer <br /> to Yourself
                 </p>
                 <div>
@@ -1325,12 +1356,15 @@ export default function Home() {
                   key={idx}
                   className="group cursor-pointer h-9 w-fit overflow-hidden relative"
                 >
-                  <div className="group-hover:-translate-y-full transition-transform duration-200 h-full">
-                    {item}
+                  <div className="group-hover:-translate-y-full transition-transform duration-200 h-full capitalize">
+                    {item.title}
                   </div>
-                  <div className="text-light-brown z-0 absolute top-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-200delay-10 h-full">
-                    {item}
-                  </div>
+                  <a
+                    href={`#${item.slug}`}
+                    className="nav-link text-light-brown z-0 absolute top-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-200 delay-10 h-full"
+                  >
+                    {item.title}
+                  </a>
                 </li>
               );
             })}
