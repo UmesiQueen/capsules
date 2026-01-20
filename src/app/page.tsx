@@ -13,8 +13,9 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Capsule from "@/components/CapsuleCard";
 import TextRevealAnimation from "@/components/TextRevealAnimation";
 import { Button } from "@/components/ui/button";
+import Menu from "@/components/menu";
 
-const menuItems = [
+export const menuItems = [
   { title: "Welcome", slug: "welcome" },
   { title: "Introduction", slug: "introduction" },
   { title: "Houses", slug: "houses" },
@@ -604,6 +605,7 @@ export default function Home() {
 
   return (
     <div className="font-sans">
+      <Menu />
       <section id="welcome" className="p-2 mb-20">
         <div className="min-h-[calc(100vh-16px)] rounded-[50px] relative overflow-hidden">
           <div className="hero h-full w-full bg-[url('/img/cap1.png')] scale-[1] bg-no-repeat bg-center bg-cover absolute top-0 left-0 contrast-110" />
