@@ -48,12 +48,12 @@ export default function Activities() {
   return (
     <div ref={activityRef}>
       <section id="activities" className="mt-50 pb-20 md:pb-50">
-        <div className="activity-container h-dvh w-full overflow-hidden flex gap-2 p-2">
+        <div className="activity-container h-dvh w-full flex gap-2 p-2">
           <div
-            className="activity-1 h-full w-screen flex-shrink-0"
+            className="activity-1 h-full w-screen shrink-0 shadow-2xl rounded-[50px] overflow-hidden"
             style={{ width: "80vw" }}
           >
-            <div className="rounded-[50px] overflow-hidden relative h-full w-full">
+            <div className="relative h-full w-full">
               <div className="activity-img w-full h-full">
                 <Image
                   src="/img/activities-1.png"
@@ -65,7 +65,7 @@ export default function Activities() {
               </div>
               <div className="absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-4 md:px-6 py-6 md:py-10 text-white">
                 <div className="flex flex-col-reverse md:flex-row justify-between md:items-start">
-                  <h3 className="text-4xl font-semibold">
+                  <h3 className="text-3xl md:text-4xl font-semibold">
                     Buggy tours <br /> in the desert
                   </h3>
                   <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm ml-auto">
@@ -91,10 +91,10 @@ export default function Activities() {
             </div>
           </div>
           <div
-            className="activity-2 h-full w-screen flex-shrink-0"
+            className="activity-2 h-full w-screen shrink-0 shadow-2xl rounded-[50px] overflow-hidden"
             style={{ width: "80vw" }}
           >
-            <div className="rounded-[50px] overflow-hidden relative h-full w-full">
+            <div className="relative h-full w-full">
               <div className="activity-img w-full h-full">
                 <Image
                   src="/img/activities-2.png"
@@ -106,7 +106,7 @@ export default function Activities() {
               </div>
               <div className="absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-4 md:px-6 py-6 md:py-10 text-white">
                 <div className="flex flex-col-reverse md:flex-row justify-between md:items-start">
-                  <h3 className="text-4xl font-semibold">
+                  <h3 className="text-3xl md:text-4xl font-semibold">
                     Breathtaking <br /> desert hikes
                   </h3>
                   <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm ml-auto">
@@ -132,10 +132,10 @@ export default function Activities() {
             </div>
           </div>
           <div
-            className="activity-3  h-full w-screen flex-shrink-0"
+            className="activity-3 h-full w-screen shrink-0 shadow-2xl rounded-[50px] overflow-hidden"
             style={{ width: "80vw" }}
           >
-            <div className="rounded-[50px] overflow-hidden relative h-full w-full">
+            <div className="relative h-full w-full overflow-hidden">
               <div className="activity-img w-full h-full">
                 <Image
                   src="/img/activities-3.png"
@@ -147,7 +147,7 @@ export default function Activities() {
               </div>
               <div className="absolute top-0 left-0 w-full h-full z-1 flex flex-col justify-between px-4 md:px-6 py-6 md:py-10 text-white">
                 <div className="flex flex-col-reverse md:flex-row justify-between md:items-start">
-                  <h3 className="text-4xl font-semibold">
+                  <h3 className="text-3xl md:text-4xl font-semibold">
                     Exciting group <br /> rock climbing
                   </h3>
                   <div className="rounded-full py-1 px-2 border-2 font-semibold text-sm ml-auto">

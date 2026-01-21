@@ -99,7 +99,7 @@ export default function Menu() {
 
   return (
     <>
-      <div className="menu min-h-[700px] h-dvh w-full fixed z-[9997]">
+      <div className="menu min-h-[600px] h-dvh w-full fixed z-[9997]">
         <div className="menu-body h-0 w-0 absolute bottom-0 left-1/2 right-1/2 -translate-x-1/2 backdrop-blur-md">
           <div className="h-full w-full bg-bokara-grey rounded-[50px] overflow-hidden p-3">
             <div className="menu-content h-full w-full flex flex-col md:flex-row gap-5 justify-between">
@@ -194,8 +194,8 @@ export default function Menu() {
             {menuOpen ? "Close" : "Menu"}
           </p>
         </div>
-        <div className="h-full w-10 bg-bokara-grey rounded-full inline-flex items-center justify-center text-pale-white">
-          {menuOpen ? <XIcon /> : <MenuIcon />}
+        <div className="h-full w-10 bg-bokara-grey rounded-full inline-flex items-center justify-center text-light-brown">
+          {menuOpen ? <XIcon size={15} /> : <MenuIcon size={15} />}
         </div>
       </button>
     </>

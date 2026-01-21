@@ -51,7 +51,7 @@ export default function Loader({ children }: { children: React.ReactNode }) {
   return (
     <>
       {!loadingComplete ? (
-        <div className="loader-container bg-dark-brown min-h-screen min-w-screen relative flex flex-col items-center justify-center font-sans">
+        <div className="loader-container bg-dark-brown min-h-[600px] h-dvh min-w-screen relative flex flex-col items-center justify-center font-sans">
           <div className="h-20 md:h-45 w-60 md:w-150 relative *:absolute *:top-0 *:left-0 overflow-hidden">
             <div className="w-full h-full rounded-[100px] bg-black inline-flex items-center justify-center z-0">
               <p className="capsule-text text-2xl md:text-5xl tracking-wide text-pale-white">

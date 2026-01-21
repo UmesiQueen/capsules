@@ -145,8 +145,8 @@ export default function Houses() {
         .addLabel("card2OnEnter", "<")
         .fromTo(
           ".capsule-container .card2",
-          { y: "100dvh" },
-          { y: "0dvh" },
+          { y: "100lvh" },
+          { y: 0 },
           "card2OnEnter",
         )
         .fromTo(
@@ -180,8 +180,8 @@ export default function Houses() {
         .addLabel("card3OnEnter", "<")
         .fromTo(
           ".capsule-container .card3",
-          { y: "100dvh" },
-          { y: "0dvh" },
+          { y: "100lvh" },
+          { y: 0 },
           "card3OnEnter",
         )
         .fromTo(
@@ -211,9 +211,9 @@ export default function Houses() {
   return (
     <div ref={housesRef}>
       <section id="houses" className="p-2">
-        <div className="capsule-container relative h-dvh">
+        <div className="capsule-container relative h-lvh">
           <div className="card1 absolute left-0 top-0 h-full w-full z-0">
-            <div className="h-dvh w-full relative overflow-hidden flex items-center justify-center">
+            <div className="h-lvh w-full relative overflow-hidden flex items-center justify-center">
               <div className="capsule-marquee w-full flex items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
                 <Marquee autoFill={true} speed={150}>
                   <Image
@@ -245,7 +245,7 @@ export default function Houses() {
             </div>
           </div>
           {/* Terrance */}
-          <div className="card2 absolute left-0 top-0 h-full w-full z-1 translate-y-[100dvh] py-2">
+          <div className="card2 absolute left-0 top-0 h-full w-full z-1 translate-y-[100lvh] py-2">
             <Capsule
               title={"Terrance"}
               description={
@@ -264,7 +264,7 @@ export default function Houses() {
             />
           </div>
           {/* Desert */}
-          <div className=" card3 absolute left-0 top-0 h-full w-full z-2 translate-y-[100dvh] py-2">
+          <div className=" card3 absolute left-0 top-0 h-full w-full z-2 translate-y-[100lvh] py-2">
             <Capsule
               title={"Desert"}
               description={
@@ -283,11 +283,11 @@ export default function Houses() {
             />
           </div>
           <div className="scroll-indicator absolute top-10 md:top-1/2 md:bottom-1/2 -translate-y-1/2 right-5 z-10">
-            <p className="text-[clamp(15px,7vw,40px)] text-white/50">
+            <p className="hidden md:block text-[clamp(15px,7vw,40px)] text-white/50">
               (Scroll)
             </p>
           </div>
-          <div className="scroll-indicator absolute bottom-5 md:bottom-15 right-5 w-80 h-[2px] rounded-md bg-white/30 z-10 inline-flex overflow-hidden">
+          <div className="scroll-indicator absolute top-10 md:top-auto md:bottom-15 right-2 md:right-5 w-50 md:w-80 h-[2px] rounded-md bg-white/30 z-10 inline-flex overflow-hidden">
             <div className="capsule-progress w-0 h-full bg-white" />
           </div>
         </div>
@@ -451,7 +451,7 @@ function Capsule({ title, description, imgSrc, features, cost }: CapsuleProps) {
         muted
         playsInline
         loop
-        className="card-smoke absolute top-0 left-0 w-full h-full object-cover mix-blend-hard-light -scale-x-100 z-1 opacity-[0.5]"
+        className="card-smoke absolute top-0 left-0 w-full h-full object-cover mix-blend-hard-light -scale-x-100 z-1 opacity-[0.5] hidden md:block"
       >
         <source src="/img/smoke_final.mp4" type="video/mp4" />
         Your browser does not support the video tag.
