@@ -95,6 +95,29 @@ export default function Home() {
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
+    const overlay = document.querySelector(".reveal-overlay") as HTMLElement;
+    const revealTl = gsap.timeline({
+      onComplete: () => {
+        overlay.remove();
+      },
+    });
+
+    revealTl
+      // Animate a radial gradient that creates transparency from center outward
+      .fromTo(
+        overlay,
+        {
+          background:
+            "radial-gradient(circle at center, transparent 0%, #181717 0%)",
+        },
+        {
+          background:
+            "radial-gradient(circle at center, transparent 150%, #181717 150%)",
+          duration: 2,
+          ease: "power3.inOut",
+        },
+      );
+
     // hero section background zoom effect
     const hero = document.querySelector(".hero") as HTMLDivElement;
     gsap.to(hero, {
@@ -605,6 +628,7 @@ export default function Home() {
 
   return (
     <div className="font-sans">
+      <div className=" reveal-overlay h-dvh w-full fixed top-0 bottom-0 z-[9999] bg-dark-brown" />
       <Menu />
       <section id="welcome" className="p-2 mb-20">
         <div className="min-h-[calc(100vh-16px)] rounded-[50px] relative overflow-hidden">
