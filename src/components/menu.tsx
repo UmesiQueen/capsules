@@ -6,7 +6,14 @@ import { useGSAP } from "@gsap/react";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { XIcon, MenuIcon } from "lucide-react";
 
-import { menuItems } from "@/app/page";
+export const menuItems = [
+  { title: "Welcome", slug: "welcome" },
+  { title: "Introduction", slug: "introduction" },
+  { title: "Houses", slug: "houses" },
+  { title: "Why Capsules®", slug: "why" },
+  { title: "Activities", slug: "activities" },
+  { title: "Feedback", slug: "feedback" },
+];
 
 export default function Menu() {
   const [menuOpen, setMenuOpen] = React.useState(false);
