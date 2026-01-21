@@ -60,6 +60,7 @@ export default function Home() {
     const revealTl = gsap.timeline({
       onComplete: () => {
         overlay.remove();
+        ScrollTrigger.refresh();
       },
     });
 
@@ -192,7 +193,7 @@ export default function Home() {
         </section>
       </div>
       <Houses />
-      <section className="flex flex-col items-center justify-center text-center h-dvh">
+      <section className="flex flex-col items-center justify-center text-center h-svh">
         <div className="mb-10 text-[15px] text-light-brown tracking-[-0.2] leading-[23px] font-semibold">
           Closer than you think
         </div>
